@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constants.cpp                                      :+:      :+:    :+:   */
+/*   operator.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/23 22:05:08 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/04 22:49:00 by ehossain         ###   ########.fr       */
+/*   Created: 2026/04/04 22:50:55 by ehossain          #+#    #+#             */
+/*   Updated: 2026/04/04 23:17:48 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-// this part is only about type id and preproccessor define
-
-int main(void)
+int main()
 {
+
 	return (0);
 }
