@@ -1,0 +1,185 @@
+In C++, a constructor and a destructor are special member functions of a class. They control the lifecycle of an object — from creation to destruction.
+
+⸻
+
+🔹 1. Constructor (Object Initialization)
+
+A constructor is automatically called when an object is created.
+
+👉 Purpose:
+	•	Initialize variables
+	•	Allocate resources (memory, file handles, etc.)
+
+👉 Key properties:
+	•	Same name as the class
+	•	No return type (not even void)
+	•	Called automatically
+
+⸻
+
+✅ Simple Example
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+
+    // Constructor
+    Student()
+    {
+        cout << "Constructor called!" << endl;
+        name = "Unknown";
+    }
+};
+
+int main()
+{
+    Student s1;  // Constructor is called here
+    cout << s1.name << endl;
+}
+
+🧠 What happens:
+	1.	Student s1; → object is created
+	2.	Constructor runs automatically
+	3.	name is initialized
+
+⸻
+
+🔹 2. Destructor (Object Cleanup)
+
+A destructor is automatically called when an object is destroyed.
+
+👉 When is it called?
+	•	When the object goes out of scope
+	•	When delete is used (for dynamic allocation)
+
+👉 Purpose:
+	•	Free memory
+	•	Close files
+	•	Clean up resources
+
+👉 Key properties:
+	•	Same name as class
+	•	Starts with ~
+	•	No parameters
+	•	No return type
+
+⸻
+
+✅ Simple Example
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+
+    Student()
+    {
+        cout << "Constructor called!" << endl;
+    }
+
+    ~Student()
+    {
+        cout << "Destructor called!" << endl;
+    }
+};
+
+int main()
+{
+    Student s1;
+    cout << "Inside main" << endl;
+}
+
+🧠 Execution flow:
+
+Constructor called!
+Inside main
+Destructor called!
+
+👉 The destructor is called automatically when s1 goes out of scope (end of main).
+
+⸻
+
+🔥 Important Concept (Very Important for You)
+
+Think of it like:
+
+Phase	Function	Role
+Creation	Constructor	Setup / initialize
+Lifetime	Normal methods	Use the object
+Destruction	Destructor	Cleanup / free resources
+
+
+⸻
+
+🔹 3. Example with Dynamic Memory (Closer to C mindset)
+
+#include <iostream>
+using namespace std;
+
+class Buffer
+{
+private:
+    int* data;
+
+public:
+    Buffer()
+    {
+        data = new int[5];  // allocate memory
+        cout << "Memory allocated" << endl;
+    }
+
+    ~Buffer()
+    {
+        delete[] data;      // free memory
+        cout << "Memory freed" << endl;
+    }
+};
+
+int main()
+{
+    Buffer b1;
+}
+
+🧠 Why this matters:
+
+If you don’t use a destructor, you get:
+👉 memory leaks (same problem as in C with malloc)
+
+⸻
+
+⚠️ Common Beginner Mistakes
+	•	❌ Forgetting destructor when using new
+	•	❌ Thinking constructor must be called manually
+	•	❌ Adding return type to constructor/destructor
+	•	❌ Not understanding automatic call behavior
+
+⸻
+
+🚀 Forward Thinking (Important for later)
+
+You will soon learn:
+	•	Parameterized constructors
+	•	Copy constructor
+	•	Rule of Three / Five
+	•	RAII (Resource Acquisition Is Initialization) ← very important concept
+
+⸻
+
+🎯 Quick Summary
+	•	Constructor = builds the object
+	•	Destructor = destroys the object
+	•	Both are called automatically
+	•	Essential for memory/resource management
+
+⸻
+
+If you want, next step I can show you:
+👉 how constructors work with parameters
+👉 or how copy constructors can break your program if misunderstood (very important in C++).

@@ -1,0 +1,501 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<p class="p1"><span class="s1">Absolutely. Let’s connect the whole picture in a way that feels natural.</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><h1><span class="s1">1) Memory diagrams: what<span class="Apple-converted-space"> </span></span></h1><h1><span class="s1">new</span></h1><h1><span class="s1"><span class="Apple-converted-space"> </span>and<span class="Apple-converted-space"> </span></span></h1><h1><span class="s1">delete</span></h1><h1><span class="s1"><span class="Apple-converted-space"> </span>really do</span></h1></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Think of your program as having two big memory zones:</span></p>
+<p class="p3"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">Stack</span><span class="s2">: automatic, temporary, tied to scope</span></p>
+</li><li>
+<p class="p1"><span class="s1">Heap</span><span class="s2">: manual, persistent until you free it</span></p>
+</li></ul></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p3"><span class="s2"><h2><span class="s1">Example 1: single<span class="Apple-converted-space"> </span></span></h2><h2><span class="s1">int</span></h2></span></p>
+
+
+<pre><code>int *p = new int(42);</code></pre>
+
+
+<p class="p1"><span class="s1">What happens:</span></p>
+<p class="p2"><span class="s2"><ol start="1"><li>
+<p class="p1"><span class="s1">new int(42)</span><span class="s2"> asks the heap for enough memory for one </span><span class="s1">int</span></p>
+</li><li>
+<p class="p1"><span class="s1">That memory is initialized with </span><span class="s2">42</span></p>
+</li><li>
+<p class="p1"><span class="s1">The address of that memory is stored in </span><span class="s2">p</span></p>
+</li></ol></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">A simple picture:</span></p>
+
+
+<pre><code>Stack                          Heap
+-----                          -----
+p  -------------------------&gt;  [ 42 ]</code></pre>
+
+
+<p class="p1"><span class="s1">So </span><span class="s2">p</span><span class="s1"> itself is a normal pointer variable on the stack, but it points to memory on the heap.</span></p>
+<p class="p2"><span class="s3"><hr></span></p>
+<p class="p2"><span class="s3"><h2><span class="s1">Example 2: deleting it</span></h2></span></p>
+
+
+<pre><code>delete p;</code></pre>
+
+
+<p class="p1"><span class="s1">Now the heap memory is given back.</span></p>
+
+
+<pre><code>Stack                          Heap
+-----                          -----
+p  -------------------------&gt;  [ freed ]</code></pre>
+
+
+<p class="p1"><span class="s1">Important detail: </span><span class="s2">p</span><span class="s1"> still contains an address after </span><span class="s2">delete</span><span class="s1">, but that address is now invalid. That is why using </span><span class="s2">*p</span><span class="s1"> after </span><span class="s2">delete</span><span class="s1"> is dangerous.</span></p>
+<p class="p2"><span class="s3"><hr></span></p>
+<p class="p2"><span class="s3"><h2><span class="s1">Example 3: dynamic array</span></h2></span></p>
+
+
+<pre><code>int *arr = new int[3];</code></pre>
+
+
+<p class="p1"><span class="s1">Picture:</span></p>
+
+
+<pre><code>Stack                          Heap
+-----                          -----
+arr -----------------------&gt;   [ ? ][ ? ][ ? ]</code></pre>
+
+
+<p class="p1"><span class="s1">You can use it like this:</span></p>
+
+
+<pre><code>arr[0] = 10;
+arr[1] = 20;
+arr[2] = 30;</code></pre>
+
+
+<p class="p1"><span class="s1">Now:</span></p>
+
+
+<pre><code>Stack                          Heap
+-----                          -----
+arr -----------------------&gt;   [10 ][20 ][30 ]</code></pre>
+
+
+<p class="p1"><span class="s1">To free it:</span></p>
+
+
+<pre><code>delete[] arr;</code></pre>
+
+
+<p class="p1"><span class="s1">That </span><span class="s2">[]</span><span class="s1"> matters. Array allocation must be matched with array deallocation.</span></p>
+<p class="p2"><span class="s3"><hr></span></p>
+<p class="p2"><span class="s3"><h1><span class="s1">2) The most important rule: match allocation and deallocation</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">This is one of the biggest beginner traps.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p2"><span class="s3"><h2><span class="s1">Single object</span></h2></span></p>
+
+
+<pre><code>int *p = new int(5);
+delete p;</code></pre>
+
+
+<p class="p1"><span class="s1"><h2><span class="s1">Array</span></h2></span></p>
+
+
+<pre><code>int *arr = new int[5];
+delete[] arr;</code></pre>
+
+
+<p class="p1"><span class="s1"><h3><span class="s1">Why this matters</span></h3></span></p>
+<p class="p2"><span class="s2"></span><br></p>
+<p class="p3"><span class="s3">new</span><span class="s2"> and </span><span class="s3">delete</span><span class="s2"> work as a pair.</span></p>
+<p class="p3"><span class="s3">new[]</span><span class="s2"> and </span><span class="s3">delete[]</span><span class="s2"> work as a pair.</span></p>
+<p class="p2"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2">If you mix them, the program has </span><span class="s4">undefined behavior</span><span class="s2">. That means anything can happen: crash, corruption, weird bugs, or appearing to work until it does not.</span></p>
+<p class="p1"><span class="s1"><hr></span></p>
+<p class="p1"><span class="s1"><h1><span class="s1">3) Connection with C:<span class="Apple-converted-space"> </span></span></h1><h1><span class="s1">malloc</span></h1><h1><span class="s1"><span class="Apple-converted-space"> </span>/<span class="Apple-converted-space"> </span></span></h1><h1><span class="s1">free</span></h1></span></p>
+<p class="p2"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2">This is a very useful bridge if you already know C.</span></p>
+<p class="p2"><span class="s2"></span><br></p>
+<p class="p1"><span class="s1"><h2><span class="s1">C style</span></h2></span></p>
+
+
+<pre><code>int *p = malloc(sizeof(int));
+*p = 42;
+free(p);</code></pre>
+
+
+<p class="p1"><span class="s1"><h2><span class="s1">C++ style</span></h2></span></p>
+
+
+<pre><code>int *p = new int(42);
+delete p;</code></pre>
+
+
+<p class="p1"><span class="s1">The idea is similar:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">both allocate memory dynamically</span></p>
+</li><li>
+<p class="p1"><span class="s1">both require manual release</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">But there is a major difference.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h2><span class="s1">malloc</span></h2><h2><span class="s1"><span class="Apple-converted-space"> </span>does not construct objects</span></h2></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s3">malloc</span><span class="s1"> only reserves raw bytes.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">It does not call constructors.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p2"><span class="s2"><h2><span class="s1">new</span></h2><h2><span class="s1"><span class="Apple-converted-space"> </span>does both:</span></h2></span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">allocates memory</span></p>
+</li><li>
+<p class="p1"><span class="s1">constructs the object</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">That is why </span><span class="s3">new</span><span class="s1"> is the proper C++ tool for objects.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Example:</span></p>
+
+
+<pre><code>class Student {
+public:
+    Student() {
+        std::cout &lt;&lt; &quot;constructor\n&quot;;
+    }
+};
+
+Student *s1 = (Student *)malloc(sizeof(Student)); // not good in C++
+Student *s2 = new Student();                      // correct C++</code></pre>
+
+
+<p class="p1"><span class="s1">With </span><span class="s2">new Student()</span><span class="s1">, the constructor runs.</span></p>
+<p class="p1"><span class="s1">With </span><span class="s2">malloc</span><span class="s1">, it does not.</span></p>
+<p class="p2"><span class="s3"><hr></span></p>
+<p class="p2"><span class="s3"><h2><span class="s1">free</span></h2><h2><span class="s1"><span class="Apple-converted-space"> </span>does not destroy objects</span></h2></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s2">free()</span><span class="s1"> releases memory, but it does not call destructors.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">That is a huge difference in C++.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">If a class has a destructor, you need </span><span class="s2">delete</span><span class="s1"> so that the destructor runs.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Example:</span></p>
+
+
+<pre><code>class Test {
+public:
+    ~Test() {
+        std::cout &lt;&lt; &quot;destructor\n&quot;;
+    }
+};
+
+Test *t = new Test();
+delete t;   // destructor is called</code></pre>
+
+
+<p class="p1"><span class="s1">If you used </span><span class="s2">free(t)</span><span class="s1"> instead, the destructor would not run, which breaks C++ object lifetime rules.</span></p>
+<p class="p2"><span class="s3"><hr></span></p>
+<p class="p2"><span class="s3"><h1><span class="s1">4) Why<span class="Apple-converted-space"> </span></span></h1><h1><span class="s1">delete</span></h1><h1><span class="s1"><span class="Apple-converted-space"> </span>is more than “just free”</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">For a single object, this:</span></p>
+
+
+<pre><code>delete p;</code></pre>
+
+
+<p class="p1"><span class="s1">really does two things:</span></p>
+<p class="p2"><span class="s2"><ol start="1"><li>
+<p class="p1"><span class="s1">calls the destructor of the object</span></p>
+</li><li>
+<p class="p1"><span class="s1">releases the memory</span></p>
+</li></ol></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">That means </span><span class="s3">delete</span><span class="s1"> is responsible for both </span><span class="s4">cleanup</span><span class="s1"> and </span><span class="s4">deallocation</span><span class="s1">.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">For arrays:</span></p>
+
+
+<pre><code>delete[] arr;</code></pre>
+
+
+<p class="p1"><span class="s1">it destroys every element in the array, then frees the block.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">5) Common mistakes to learn from</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p2"><span class="s2"><h2><span class="s1">Mistake 1: using memory after delete</span></h2></span></p>
+
+
+<pre><code>int *p = new int(7);
+delete p;
+std::cout &lt;&lt; *p;   // dangerous</code></pre>
+
+
+<p class="p1"><span class="s1">After </span><span class="s2">delete</span><span class="s1">, </span><span class="s2">p</span><span class="s1"> is a dangling pointer. It points to memory that no longer belongs to you.</span></p>
+<p class="p2"><span class="s3"><hr></span></p>
+<p class="p2"><span class="s3"><h2><span class="s1">Mistake 2: forgetting<span class="Apple-converted-space"> </span></span></h2><h2><span class="s1">delete</span></h2></span></p>
+
+
+<pre><code>void f() {
+    int *p = new int(9);
+}</code></pre>
+
+
+<p class="p1"><span class="s1">The function ends, the pointer variable disappears, but the heap memory is still allocated. That is a memory leak.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h2><span class="s1">Mistake 3: wrong delete form</span></h2></span></p>
+
+
+<pre><code>int *arr = new int[4];
+delete arr;     // wrong</code></pre>
+
+
+<p class="p1"><span class="s1">Must be:</span></p>
+
+
+<pre><code>delete[] arr;</code></pre>
+
+
+<p class="p1"><span class="s1"><hr></span></p>
+<p class="p1"><span class="s1"><h2><span class="s1">Mistake 4: double delete</span></h2></span></p>
+
+
+<pre><code>int *p = new int(3);
+delete p;
+delete p;   // very bad</code></pre>
+
+
+<p class="p1"><span class="s1">You are freeing already freed memory. That is undefined behavior.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">6) Step-by-step debugging exercises</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">These are good mental checks. Do not rush them. Trace the memory in your head.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h2><span class="s1">Exercise A</span></h2></span></p>
+
+
+<pre><code>int *a = new int(5);
+int *b = a;
+delete a;</code></pre>
+
+
+<p class="p1"><span class="s1">Questions to ask yourself:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">What does </span><span class="s2">b</span><span class="s1"> point to?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Is that memory still valid?</span></p>
+</li><li>
+<p class="p1"><span class="s1">What happens if you do </span><span class="s2">*b</span><span class="s1"> now?</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Think carefully: </span><span class="s3">b</span><span class="s1"> still holds the same address, but the memory was freed. So </span><span class="s3">b</span><span class="s1"> becomes dangerous too.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h2><span class="s1">Exercise B</span></h2></span></p>
+
+
+<pre><code>int *arr = new int[3];
+arr[0] = 1;
+arr[1] = 2;
+arr[2] = 3;
+delete[] arr;</code></pre>
+
+
+<p class="p1"><span class="s1">Questions:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">Is this correct?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Why is </span><span class="s2">delete[]</span><span class="s1"> required here?</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Yes, this is correct, because the memory was allocated as an array.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h2><span class="s1">Exercise C</span></h2></span></p>
+
+
+<pre><code>int *p = new int(10);
+delete p;
+p = NULL;</code></pre>
+
+
+<p class="p1"><span class="s1">Questions:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">Why set </span><span class="s2">p</span><span class="s1"> to </span><span class="s2">NULL</span><span class="s1"> after delete?</span></p>
+</li><li>
+<p class="p1"><span class="s1">What danger does that reduce?</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">It reduces the chance of accidentally using a dangling pointer again.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">In modern C++, </span><span class="s3">nullptr</span><span class="s1"> is preferred over </span><span class="s3">NULL</span><span class="s1">:</span></p>
+
+
+<pre><code>p = nullptr;</code></pre>
+
+
+<p class="p1"><span class="s1"><hr></span></p>
+<p class="p1"><span class="s1"><h2><span class="s1">Exercise D</span></h2></span></p>
+
+
+<pre><code>int *p = new int(10);
+int *q = new int(10);
+
+delete p;
+delete q;</code></pre>
+
+
+<p class="p1"><span class="s1">Questions:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">Are both objects deleted correctly?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Do </span><span class="s2">p</span><span class="s1"> and </span><span class="s2">q</span><span class="s1"> refer to the same memory?</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Yes, this is fine because each pointer owns its own allocation.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">7) A very important idea: ownership</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">This is a concept that will help you a lot later.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">When you do:</span></p>
+
+
+<pre><code>int *p = new int(42);</code></pre>
+
+
+<p class="p1"><span class="s1">you are now the </span><span class="s2">owner</span><span class="s1"> of that memory.</span></p>
+<p class="p1"><span class="s1">That means you are responsible for deleting it exactly once.</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Ownership questions you should always ask:</span></p>
+<p class="p3"><span class="s3"><ul><li>
+<p class="p1"><span class="s1">Who allocated this memory?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Who must delete it?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Is it shared?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Could two pointers refer to the same block?</span></p>
+</li></ul></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">This thinking prevents many bugs.</span></p>
+<p class="p3"><span class="s3"><hr></span></p>
+<p class="p3"><span class="s3"><h1><span class="s1">8) A tiny example with a class</span></h1></span></p>
+
+
+<pre><code>class Box {
+public:
+    Box() {
+        std::cout &lt;&lt; &quot;Box created\n&quot;;
+    }
+
+    ~Box() {
+        std::cout &lt;&lt; &quot;Box destroyed\n&quot;;
+    }
+};
+
+int main() {
+    Box *b = new Box();
+    delete b;
+}</code></pre>
+
+
+<p class="p1"><span class="s1">What happens:</span></p>
+<p class="p2"><span class="s2"><ol start="1"><li>
+<p class="p1"><span class="s1">new Box()</span><span class="s2"> allocates memory</span></p>
+</li><li>
+<p class="p1"><span class="s1">constructor runs</span></p>
+</li><li>
+<p class="p1"><span class="s1">delete b</span><span class="s2"> calls destructor</span></p>
+</li><li>
+<p class="p1"><span class="s1">memory is freed</span></p>
+</li></ol></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">This is the C++ object model in action.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">9) Key difference between C and C++</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Here is the clean mental summary:</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p2"><span class="s2"><h2><span class="s1">C</span></h2></span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">malloc</span><span class="s2"> / </span><span class="s1">free</span></p>
+</li><li>
+<p class="p1"><span class="s1">raw memory only</span></p>
+</li><li>
+<p class="p1"><span class="s1">no constructors/destructors</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p2"><span class="s2"><h2><span class="s1">C++</span></h2></span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">new</span><span class="s2"> / </span><span class="s1">delete</span></p>
+</li><li>
+<p class="p1"><span class="s1">object construction and destruction</span></p>
+</li><li>
+<p class="p1"><span class="s1">correct for classes</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">That is why in C++ you should not casually replace </span><span class="s3">new</span><span class="s1"> with </span><span class="s3">malloc</span><span class="s1">.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">10) What to remember forever</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Here is the core rule set:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">new</span><span class="s2"> allocates one object on the heap</span></p>
+</li><li>
+<p class="p1"><span class="s1">new[]</span><span class="s2"> allocates an array on the heap</span></p>
+</li><li>
+<p class="p1"><span class="s1">delete</span><span class="s2"> frees one object</span></p>
+</li><li>
+<p class="p1"><span class="s1">delete[]</span><span class="s2"> frees an array</span></p>
+</li><li>
+<p class="p1"><span class="s1">new</span><span class="s2">/</span><span class="s1">delete</span><span class="s2"> must match</span></p>
+</li><li>
+<p class="p1"><span class="s1">new[]</span><span class="s2">/</span><span class="s1">delete[]</span><span class="s2"> must match</span></p>
+</li><li>
+<p class="p1"><span class="s1">after </span><span class="s2">delete</span><span class="s1">, the pointer becomes dangling</span></p>
+</li><li>
+<p class="p1"><span class="s1">malloc</span><span class="s2">/</span><span class="s1">free</span><span class="s2"> are C functions and do not handle constructors/destructors</span></p>
+</li></ul></span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">11) The beginner trap to avoid</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Many beginners think:</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<blockquote style="margin: 0.0px 0.0px 0.0px 15.0px; font: 21.0px '.AppleSystemUIFont'; color: #111111"><span class="s1">“Pointer variable is on the stack, so the data is also on the stack.”</span></blockquote>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">No. The pointer is only an address.</span></p>
+<p class="p1"><span class="s1">The actual data may be on the heap.</span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">That distinction is one of the most important ideas in C++ memory management.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p2"><span class="s2"><h1><span class="s1">12) Small mental test for you</span></h1></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">Consider this:</span></p>
+
+
+<pre><code>int *p = new int(100);
+int *q = p;
+delete p;</code></pre>
+
+
+<p class="p1"><span class="s1">Now ask yourself:</span></p>
+<p class="p2"><span class="s2"><ul><li>
+<p class="p1"><span class="s1">Does </span><span class="s2">q</span><span class="s1"> still point to the same address?</span></p>
+</li><li>
+<p class="p1"><span class="s1">Is that address valid?</span></p>
+</li><li>
+<p class="p1"><span class="s1">What would happen if you wrote </span><span class="s2">*q</span><span class="s1">?</span></p>
+</li></ul></span></p>
+<p class="p3"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">That is exactly how you build strong intuition.</span></p>
+<p class="p2"><span class="s2"><hr></span></p>
+<p class="p1"><span class="s1">I can next give you a </span><span class="s3"><img src="file:///Attachment.png" alt="Attachment.png"> </span><span class="s4">visual memory timeline</span><span class="s1"> showing stack and heap at each line of code, which is usually the fastest way to make this feel obvious.</span></p>
+
+</body>
+</html>

@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.2.3.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.5in 11in; margin: 1in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><p style="line-height: 104%; margin-bottom: 0in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt">Yes
+— this is a very important bridge between </font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>C
+and C++</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">The
+short idea is:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	In
+</span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>C</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+you usually manage strings with </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+and </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char
+*</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+and arrays manually.</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	In
+</span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>C++</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+you can still use those C-style tools, but you also have safer,
+higher-level types like </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+and </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::vector</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	If
+you are learning C++ at 42, you should understand both, because
+C-style arrays and strings still appear everywhere.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>1)
+C-style strings in C++</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">A
+C-string is just a </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>sequence
+of characters ending with '\0'</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+str[] = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">In
+memory, that is:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'h'
+'e' 'l' 'l' 'o' '\0'</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+last </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is called the </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>null
+terminator</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">It
+tells functions where the string ends.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">So
+when you print it:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::cout
+&lt;&lt; str &lt;&lt; std::endl;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">C++
+prints characters until it reaches </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>2)
+C-style string and array are related, but not the same thing</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is where many beginners get confused.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+str[] = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is an </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>array
+of char</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">But
+it is also used as a </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>string</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+because it ends with </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">So:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	every
+C-string is a char array</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	but
+not every char array is a valid string</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+letters[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">5</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= {</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'h'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'e'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'l'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'l'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'o'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">};</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is an array of 5 chars, but it is </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>not</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+a C-string, because there is no </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you try to print it like a string, the program may continue reading
+past the array until it accidentally finds a zero byte. That is
+dangerous.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>3)
+Strings in C: manual management</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">In
+C, you often do this:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">6</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Here,
+the compiler allocates enough space for:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	5
+letters</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	1
+null terminator</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">So
+the array size is 6.</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you want to modify it:</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">0</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'H'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Now
+it becomes </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">&quot;Hello&quot;</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">But
+the size is fixed. You cannot safely store a larger string than the
+array can hold.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>4)
+Dynamic strings in C-style</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you do not know the size at compile time, you can allocate
+dynamically.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example
+in C++ using C-style dynamic allocation:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+*str = </span></font></font></font><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">new</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">
+char[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">6</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">];</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">0</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'h'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'e'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">2</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'l'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'l'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">4</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'o'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">str[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">5</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Now
+you must free it:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">delete</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">[]
+str;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is required because it was allocated as an array.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>5)
+Very important: copying strings manually is dangerous</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Suppose
+you do:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+a[] = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+b[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">10</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">];</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">b
+= a;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+does </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>not</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+work in C or C++. Arrays are not assignable like that.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you want to copy C-strings, you need functions like:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">strcpy</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">strncpy</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">strlen</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">strcmp</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">But
+those require care because they do not know the destination size
+automatically.</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#9b2393"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">#</span></font></font></font><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">include</span></font></font></font><font color="#9b2393"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">
+</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&lt;cstring&gt;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+a[] = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+b[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">10</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">];</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::strcpy(b,
+a);</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Now
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">b</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+contains </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">But
+if </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">b</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+were too small, you would overflow memory. That is a classic bug.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>6)
+Arrays in C++ like in C</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">C-style
+arrays in C++ behave very similarly to C.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+arr[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">5</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">];</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is a fixed-size array of 5 integers.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">You
+can do:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">arr[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">0</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">10</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">arr[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">20</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">But
+you cannot assign one whole array to another:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+a[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= {</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">2</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">};</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+b[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">];</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">b
+= a;   </span></font></font></font><font color="#007400"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">//
+not allowed</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Why?
+Because arrays are not normal objects with assignment semantics.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>7)
+Dynamic arrays in C++ with new[]</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+the size is known only at runtime:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+n;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::cin
+&gt;&gt; n;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+*arr = </span></font></font></font><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">new</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">
+int[n];</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+creates an array of </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">n</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+integers on the heap.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">You
+access it like:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">arr[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">0</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">42</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">arr[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">99</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">And
+you must free it with:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">delete</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">[]
+arr;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you forget the brackets and write </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">delete
+arr;</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+that is wrong.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>8)
+The main problem with C-style arrays</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">The
+biggest problem is that arrays do not remember their size.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+arr[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">4</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= {</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">2</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">,
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">4</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">};</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">The
+array knows it has 4 elements only at compile time in this scope. But
+when passed to a function:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">void
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">print</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">(int
+arr[])</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">this
+is actually treated like:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">void
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">print</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">(int
+*arr)</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">The
+function loses the size information.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+means you often need to pass the size separately:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">void
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">print</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">(int
+*arr, int size)</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">{</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">
+   </font><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">for</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">
+(int i = </span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">0</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;
+i &lt; size; i++)</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">
+       <font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::cout
+&lt;&lt; arr[i] &lt;&lt; std::endl;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">}</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>9)
+Why std::string is better in C++</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">C++
+gives you </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+which is usually much safer and easier.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#9b2393"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">#</span></font></font></font><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">include</span></font></font></font><font color="#9b2393"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">
+</span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&lt;string&gt;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::string
+s = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s
++= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;
+world&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is far easier than manually managing </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">What
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+gives you:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	automatic
+memory management</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	resizing</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	copying</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	concatenation</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	safer
+operations</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	no
+need to manually add </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">So
+instead of thinking:</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in; margin-left: 0.21in">
+<font color="#111111">“<font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Did
+I allocate enough space? Did I forget the terminator?”</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; margin-left: 0.21in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in; margin-left: 0.21in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">You
+can just write clean code.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>10)
+Example: C-string vs std::string</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="6" style="font-size: 26pt"><b>C-style:</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+name[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">20</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;Alice&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">You
+must make sure:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	the
+array is big enough</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	you
+do not overflow it</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	the
+string is null-terminated</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="6" style="font-size: 26pt"><b>C++
+style:</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::string
+name = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;Alice&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Much
+easier. It grows as needed.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>11)
+When you still use C-style strings in C++</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">You
+will still see them in many situations:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	low-level
+exercises</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	legacy
+code</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	some
+system programming APIs</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	command-line
+arguments:</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">int
+</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">main</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">(int
+argc, char **argv)</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Here,
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">argv</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is an array of C-strings.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::cout
+&lt;&lt; argv[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+&lt;&lt; std::endl;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+is why understanding C-style strings is essential even in C++.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>12)
+A common trap: string literals</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is subtle and important.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+*s = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">In
+modern C++, this is bad style and often incorrect.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Why?
+Because </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is a string literal, which should be treated as read-only. The safest
+form is:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">const
+char *s = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+tells the compiler:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in; margin-left: 0.21in">
+<font color="#111111">“<font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">I
+promise not to modify this text.”</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; margin-left: 0.21in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in; margin-left: 0.21in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you try to write into a string literal, you may crash.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>13)
+Arrays vs pointers: not the same thing</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is another key concept.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+str[] = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+*p = str;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Here:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">str</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is an array</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">p</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is a pointer to the first character</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">They
+are related, but not identical.</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">An
+array has storage for all characters.</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">A
+pointer is just an address.</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+means:</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">sizeof(str)</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">and</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">sizeof(p)</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">are
+different.</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">sizeof(str)</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+gives the whole array size</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">sizeof(p)</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+gives the size of a pointer</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+difference matters a lot.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>14)
+Manual string length in C-style</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">To
+find the length of a C-string, you need to scan until </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Example
+conceptually:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">size_t
+len = std::strlen(str);</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+function counts characters until it finds the null terminator.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">For
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,
+you do:</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s.length()</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">or</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s.size()</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Much
+cleaner.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>15)
+How to think about memory management</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">For
+C-style strings and arrays, ask these questions:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	Who
+owns this memory?</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	Is
+it stack-allocated or heap-allocated?</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	Is
+it fixed size or dynamic?</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	Do
+I need to free it with </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">delete[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">?</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	Is
+it null-terminated if it is a string?</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+mindset saves you from many bugs.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>16)
+Example of safe and unsafe usage</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="6" style="font-size: 26pt"><b>Safe
+fixed C-string:</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+name[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">10</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;Bob&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Enough
+space, valid null terminator.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="6" style="font-size: 26pt"><b>Unsafe:</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+name[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;Bob&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">This
+is too small, because </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">&quot;Bob&quot;</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+needs 4 bytes:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'B'</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'o'</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'b'</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">So
+this overflows.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>17)
+C++ modern rule of thumb</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">If
+you are writing normal C++ code:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	use
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+for text</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	use
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::vector</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+for dynamic arrays</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Use
+raw C-style arrays only when:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	the
+exercise asks for it</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	you
+are learning memory management</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	you
+are interfacing with C APIs</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>18)
+What 42 often wants you to understand</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">In
+42-style exercises, they often want you to learn the manual side
+first:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char
+*</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char[]</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">new[]</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">delete[]</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	copying
+strings</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	avoiding
+leaks</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	understanding
+ownership</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">That
+is why C-style string handling is still important. It teaches you how
+memory works under the hood.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>19)
+The clean mental model</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Think
+of it like this:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+is a block of characters</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	a
+C-string is a char array ending with </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">'\0'</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char
+*</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+points to the first character</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">new[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+creates a dynamic array</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">delete[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+frees it</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+manages all that for you</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>20)
+Tiny comparison example</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="6" style="font-size: 26pt"><b>C-style</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">char
+*s = </span></font></font></font><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">new</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">
+char[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">6</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">];</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">0</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'h'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">1</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'e'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">2</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'l'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">3</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'l'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">4</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'o'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">s[</span></font></font></font><font color="#1c00cf"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">5</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">]
+= </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">'\0'</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#aa0d91"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">delete</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">[]
+s;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="6" style="font-size: 26pt"><b>C++
+style</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">std::string
+s = </span></font></font></font><font color="#c41a16"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">&quot;hello&quot;</span></font></font></font><font color="#000000"><font face="Courier, serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">;</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">The
+second one is much safer and more practical.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="7" style="font-size: 32pt"><b>21)
+Best beginner advice</b></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Learn
+both, but separate them in your head:</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>C-style
+string and array management</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+= manual, low-level, fragile</span></font></font></font></p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	•	</span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>C++
+string and container management</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+= safer, automatic, preferred</span></font></font></font></p>
+<p style="text-indent: -0.18in; font-weight: normal; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in; line-height: 104%">
+<br/>
+
+</p>
+<p style="text-indent: -0.18in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.18in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">Once
+you understand the manual version, </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+and </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::vector</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+will make much more sense.</span></font></font></font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 100%">
+<br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><font color="#000000">⸻</font></p>
+<p style="font-weight: normal; margin-bottom: 0in; line-height: 104%">
+<br/>
+
+</p>
+<p style="line-height: 104%; margin-bottom: 0in"><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">I
+can next show you a </span></font></font></font><font color="#111111"><font face=".SFUI-Heavy, serif"><font size="5" style="font-size: 21pt"><b>line-by-line
+memory trace</b></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+for:</span></font></font></font></p>
+<p style="text-indent: -0.38in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.38in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	1.	a
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+string,</span></font></font></font></p>
+<p style="text-indent: -0.38in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.38in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	2.	a
+</span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">char
+*</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">
+allocated with </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">new[]</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,</span></font></font></font></p>
+<p style="text-indent: -0.38in; line-height: 104%; margin-top: 0.17in; margin-bottom: 0in; margin-left: 0.38in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">	3.	and
+a </span></font></font></font><font color="#111111"><font face=".AppleSystemUIFontMonospaced-Regular, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">std::string</span></font></font></font><font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">,</span></font></font></font></p>
+<p style="line-height: 104%; margin-bottom: 0in; margin-left: 0.38in">
+<font color="#111111"><font face=".SFUI-Semibold, serif"><font size="5" style="font-size: 21pt"><span style="font-weight: normal">so
+you can see exactly how each one behaves in memory.</span></font></font></font></p>
+</body>
+</html>
