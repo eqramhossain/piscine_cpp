@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   namespaces.cpp                                     :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 11:46:16 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/13 11:50:09 by ehossain         ###   ########.fr       */
+/*   Created: 2026/04/18 15:18:55 by ehossain          #+#    #+#             */
+/*   Updated: 2026/04/22 23:27:22 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-namespace ekram
-{
-	int age = 42;
-	int postcode = 93;
-	std::string name = "ekram";
-}
+#include "Contact.class.hpp"
 
-int main(void)
+class	PhoneBook
 {
-	std::cout << ekram::age << "\n";
-	std::cout << ekram::postcode << "\n";
-	std::cout << ekram::name << "\n";
-	return (0);
-}
+	private:
+		static int	id;
+		static int	i;
+		Contact		contacts[8];
+	public:
+		PhoneBook(void);
+		~PhoneBook(void);
+
+		void	ft_add_contacts(void);
+		void	ft_replace_contact(void);
+		void	ft_search_contacts(void);
+		void	ft_display_contacts(void);
+};
+
+#endif
