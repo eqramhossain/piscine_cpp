@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:55:15 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/23 00:04:39 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:10:40 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,3 @@ std::string	Contact::ft_get_darkest_secret(void)
 {
 	return (this->darkest_secret);
 }
-
