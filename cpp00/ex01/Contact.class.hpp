@@ -6,14 +6,14 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:19:37 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/23 13:10:52 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/04/25 15:58:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-#include <iostream>
+#include <string>
 
 class	Contact
 {
@@ -23,6 +23,7 @@ class	Contact
 		std::string	nickname;
 		std::string	phone_number;
 		std::string	darkest_secret;
+		int		is_oldest;
 	public:
 		Contact(void);
 		~Contact(void);
@@ -37,6 +38,7 @@ class	Contact
 		std::string	ft_get_phone_number(void);
 		void		ft_add_darkest_secret(std::string add_darkest_secret);
 		std::string	ft_get_darkest_secret(void);
+		void		ft_add_oldest(int oldest);
+		int		ft_get_oldest(void);
 };
-
 #endif

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 23:20:53 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/23 15:09:16 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/04/25 15:59:07 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ int	main(void)
 	i = 0;
 	while(1)
 	{
-		std::cin.clear();
 		std::cout << "-> ";
+		std::cin.clear();
 		std::getline(std::cin, cmd);
-		// std::cin >> cmd;
-		if (cmd == "ADD")
+		if (cmd == "ADD" && i < 8)
 		{
 			phonebook.ft_add_contacts(i);
 			i++;
 		}
 		else if (cmd == "ADD" && i >= 8)
 		{
+			std::cout << "SEARCH REPLACE" << std::endl;
 			oldest_id = phonebook.ft_find_oldest();
-			phonebook.ft_replace_oldest(oldest_id);
+			phonebook.ft_replace_oldest(oldest_id, i);
 			i++;
 		}
 		else if (cmd == "SEARCH")
 		{
-			phonebook.ft_search_contacts();
 			phonebook.ft_display_contacts();
+			phonebook.ft_search_contacts();
 		}
 		else if (cmd == "EXIT")
 			break;

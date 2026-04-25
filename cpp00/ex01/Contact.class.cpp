@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:55:15 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/23 13:10:40 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/04/23 20:21:33 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,14 @@ void	Contact::ft_add_darkest_secret(std::string add_darkest_secret)
 std::string	Contact::ft_get_darkest_secret(void)
 {
 	return (this->darkest_secret);
+}
+
+void		Contact::ft_add_oldest(int oldest)
+{
+	this->is_oldest = oldest;
+}
+
+int		Contact::ft_get_oldest(void)
+{
+	return (this->is_oldest);
 }
