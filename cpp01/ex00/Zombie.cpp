@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 00:23:46 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/26 00:25:49 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/04/26 13:07:23 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,7 @@ Zombie::~Zombie(void)
 
 }
 
+void	Zombie::annonce(void)
+{
+
+}
