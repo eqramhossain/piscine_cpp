@@ -6,13 +6,13 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/21 17:30:24 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/05 15:44:42 by ehossain         ###   ########.fr        #
+#    Updated: 2026/05/05 15:56:13 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= megaphone
 SRC= megaphone.cpp
-OBJ= megaphone.o
+OBJ= $(SRC:.cpp=.o)
 CXX= c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 
@@ -21,8 +21,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
 
-$(OBJ): $(SRC)
-	$(CXX) $(CXXFLAGS) -c $(SRC) 
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f megaphone.o
