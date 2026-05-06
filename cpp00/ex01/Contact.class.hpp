@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:19:37 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/25 15:58:16 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:55:05 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ class	Contact
 		~Contact(void);
 
 		void		ft_add_first_name(std::string add_first_name);
-		std::string	ft_get_first_name(void);
+		std::string	ft_get_first_name(std::string str);
 		void		ft_add_last_name(std::string add_last_name);
-		std::string	ft_get_last_name(void);
+		std::string	ft_get_last_name(std::string str);
 		void		ft_add_nickname(std::string add_nickname);
-		std::string	ft_get_nickname(void);
+		std::string	ft_get_nickname(std::string);
 		void		ft_add_phone_number(std::string add_phone);
 		std::string	ft_get_phone_number(void);
 		void		ft_add_darkest_secret(std::string add_darkest_secret);
 		std::string	ft_get_darkest_secret(void);
 		void		ft_add_oldest(int oldest);
 		int		ft_get_oldest(void);
+		// int		ft_is_contact_valid(void);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:00:57 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/25 15:54:25 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:57:34 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <iomanip>
 
 PhoneBook::PhoneBook(void)
 {
@@ -37,7 +38,7 @@ PhoneBook::~PhoneBook(void)
 int	PhoneBook::id[8];
 int	PhoneBook::nbr_contact = 0;
 
-void	PhoneBook::ft_add_contacts(int i)
+int	PhoneBook::ft_add_contacts(int i)
 {
 	std::string	first_name;	
 	std::string	last_name;
@@ -45,30 +46,34 @@ void	PhoneBook::ft_add_contacts(int i)
 	std::string	phone_number;
 	std::string	darkest_secret;
 
-	this->contacts[i].ft_add_oldest(i);
 
 	std::cout << "First Name: ";
 	std::getline(std::cin, first_name);
-	this->contacts[i].ft_add_first_name(first_name);
-
 	std::cout << "Last Name: ";
 	std::getline(std::cin, last_name);
-	this->contacts[i].ft_add_last_name(last_name);
-
 	std::cout << "Nickname: ";
 	std::getline(std::cin, nickname);
-	this->contacts[i].ft_add_nickname(nickname);
-
 	std::cout << "Phone Number: ";
 	std::getline(std::cin, phone_number);
-	this->contacts[i].ft_add_phone_number(phone_number);
-
 	std::cout << "Darkest Secret: ";
 	std::getline(std::cin, darkest_secret);
+
+	if (first_name.empty() || last_name.empty() || nickname.empty() || darkest_secret.empty() || phone_number.empty())
+	{
+		std::cout << "A Contact cannot have empty field" << std::endl;
+		std::cin.clear();
+		return (-1);
+	}
+	this->contacts[i].ft_add_oldest(i);
+	this->contacts[i].ft_add_first_name(first_name);
+	this->contacts[i].ft_add_last_name(last_name);
+	this->contacts[i].ft_add_nickname(nickname);
+	this->contacts[i].ft_add_phone_number(phone_number);
 	this->contacts[i].ft_add_darkest_secret(darkest_secret);
 
 	nbr_contact++;
 	this->id[i] = i;
+	return (0);
 }
 
 int	PhoneBook::ft_find_oldest(void)
@@ -78,13 +83,14 @@ int	PhoneBook::ft_find_oldest(void)
 	int	tmp;
 
 	i = 0;
-	oldest_id = 99;
+	oldest_id = 999;
 	while(i < nbr_contact)
 	{
 		tmp = oldest_id;
 		oldest_id = this->contacts[i].ft_get_oldest();
 		if (oldest_id > tmp)
 			oldest_id = tmp;
+		
 		i++;
 	}
 	return (oldest_id);
@@ -135,24 +141,30 @@ void	PhoneBook::ft_search_contacts(void)
 
 	std::cout << "Please provide the index number: ";
 	std::cin >> search_id;
-	std::cin.clear();
-	if ((search_id < 0) || (search_id >= nbr_contact))
+	
+	std::cout << "search_id = " << search_id << std::endl;
+	std::cout << "nbr_contact = " << nbr_contact << std::endl;
+	
+	if (std::cin.fail() || search_id < 0 || search_id > 7)
 	{
 		std::cout << "Provided index is not valid" << std::endl;
+		std::cin.clear();
 		return ;
 	}
-	first_name = this->contacts[search_id].ft_get_first_name();
-	last_name = this->contacts[search_id].ft_get_last_name();
-	nickname = this->contacts[search_id].ft_get_nickname();
-	phone_number = this->contacts[search_id].ft_get_phone_number();
-	darkest_secret = this->contacts[search_id].ft_get_darkest_secret();
+	if (search_id < nbr_contact)
+	{
+		first_name = this->contacts[search_id].ft_get_first_name("no");
+		last_name = this->contacts[search_id].ft_get_last_name("no");
+		nickname = this->contacts[search_id].ft_get_nickname("no");
+		phone_number = this->contacts[search_id].ft_get_phone_number();
+		darkest_secret = this->contacts[search_id].ft_get_darkest_secret(); 
 
-	std::cout << "First Name: " << first_name << std::endl;
-	std::cout << "Last Name: " << last_name << std::endl;
-	std::cout << "Nickname: " << nickname << std::endl;
-	std::cout << "Phone Number: " << phone_number << std::endl;
-	std::cout << "Darkest Secret: " << darkest_secret << std::endl;
-
+		std::cout << "First Name: " << first_name << std::endl;
+		std::cout << "Last Name: " << last_name << std::endl;
+		std::cout << "Nickname: " << nickname << std::endl;
+		std::cout << "Phone Number: " << phone_number << std::endl;
+		std::cout << "Darkest Secret: " << darkest_secret << std::endl;
+	}
 }
 
 
@@ -168,24 +180,20 @@ void	PhoneBook::ft_display_contacts(void)
 	int		i;
 
 	i = 0;
-	std::cout << "|Index";
-	std::cout << "|First Name";
-	std::cout << "|Last Name";
-	std::cout << "|Nickname|" << std::endl;
+	std::cout << "|" << std::setw(10) << "Index";
+	std::cout << "|" << std::setw(10) << "First Name";
+	std::cout << "|" << std::setw(10) << "Last Name";
+	std::cout << "|" << std::setw(11) << "Nickname|" << std::endl;
 	while(i < nbr_contact)
 	{
-		first_name = this->contacts[i].ft_get_first_name();
-		last_name = this->contacts[i].ft_get_last_name();
-		nickname = this->contacts[i].ft_get_nickname();
-		phone_number = this->contacts[i].ft_get_phone_number();
-		darkest_secret = this->contacts[i].ft_get_darkest_secret();
+		first_name = this->contacts[i].ft_get_first_name("sub");
+		last_name = this->contacts[i].ft_get_last_name("sub");
+		nickname = this->contacts[i].ft_get_nickname("sub");
 
-		std::cout << "|" << this->id[i]; // just print i
-		std::cout << "|" << first_name;
-		std::cout << "|" << last_name;
-		std::cout << "|" << nickname;
-		std::cout << "|" << phone_number;
-		std::cout << "|" << darkest_secret;
+		std::cout << "|" << std::setw(10) << this->id[i];
+		std::cout << "|" << std::setw(10) << first_name;
+		std::cout << "|" << std::setw(10) << last_name;
+		std::cout << "|" << std::setw(10) << nickname << "|";
 		std::cout << std::endl;
 		i++;
 	}

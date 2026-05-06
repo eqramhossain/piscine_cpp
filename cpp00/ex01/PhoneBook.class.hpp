@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:18:55 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/23 20:15:34 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:46:49 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 
-		void	ft_add_contacts(int i);
+		int	ft_add_contacts(int i);
 		int	ft_find_oldest(void);
 		void	ft_replace_oldest(int oldest_id, int i);
 		void	ft_search_contacts(void);

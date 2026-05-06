@@ -6,11 +6,12 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 15:55:15 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/23 20:21:33 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:56:45 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.class.hpp"
+#include <iostream>
 
 Contact::Contact(void)
 {
@@ -27,8 +28,11 @@ void	Contact::ft_add_first_name(std::string add_first_name)
 	this->first_name = add_first_name;
 }
 
-std::string	Contact::ft_get_first_name(void)
+std::string	Contact::ft_get_first_name(std::string str)
 {
+	if (str == "sub")
+		if (this->first_name.length() > 10)
+			return (this->first_name.substr(0, 9) + ".");
 	return (this->first_name);
 }
 
@@ -37,8 +41,11 @@ void	Contact::ft_add_last_name(std::string add_last_name)
 	this->last_name = add_last_name;
 }
 
-std::string	Contact::ft_get_last_name(void)
+std::string	Contact::ft_get_last_name(std::string str)
 {
+	if (str == "sub")
+		if (this->last_name.length() > 10)
+			return (this->last_name.substr(0, 9) + ".");
 	return (this->last_name);
 }
 
@@ -47,8 +54,11 @@ void	Contact::ft_add_nickname(std::string add_nickname)
 	this->nickname = add_nickname;
 }
 
-std::string	Contact::ft_get_nickname(void)
+std::string	Contact::ft_get_nickname(std::string str)
 {
+	if (str == "sub")
+		if (this->nickname.length() > 10)
+			return (this->nickname.substr(0, 9) + ".");
 	return (this->nickname);
 }
 
