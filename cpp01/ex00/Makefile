@@ -6,11 +6,11 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 19:06:11 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/06 19:36:31 by ehossain         ###   ########.fr        #
+#    Updated: 2026/05/06 23:46:51 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= zombie
+NAME= BraiiiiiiinnnzzzZ
 CXX= c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 
