@@ -6,17 +6,11 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 19:19:38 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/07 20:01:45 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:28:00 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-
-Zombie	*newZombie()
-{
-	Zombie *new_zombie = new Zombie;
-	return (new_zombie);
-}
 
 int	main(void)
 {
