@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 23:20:53 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/06 18:46:22 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/18 16:56:53 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(void)
 	{
 		std::cout << "->";
 		std::cin.clear();
+		cmd.clear();
 		std::getline(std::cin, cmd);
 		if (cmd == "ADD" && i < 8)
 		{

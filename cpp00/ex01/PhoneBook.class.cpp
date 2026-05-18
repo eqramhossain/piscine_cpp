@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 16:00:57 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/06 18:57:34 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:13:57 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,14 +138,10 @@ void	PhoneBook::ft_search_contacts(void)
 	std::string	phone_number;
 	std::string	darkest_secret;
 
-
 	std::cout << "Please provide the index number: ";
-	std::cin >> search_id;
+	std::cin >> search_id;	
 	
-	std::cout << "search_id = " << search_id << std::endl;
-	std::cout << "nbr_contact = " << nbr_contact << std::endl;
-	
-	if (std::cin.fail() || search_id < 0 || search_id > 7)
+	if (std::cin.fail() || (search_id < 0 || search_id > 7))
 	{
 		std::cout << "Provided index is not valid" << std::endl;
 		std::cin.clear();
