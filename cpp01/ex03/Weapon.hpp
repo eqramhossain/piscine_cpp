@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 16:31:43 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/12 10:59:25 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/18 18:55:59 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 class	Weapon
 {
 	private:
-		std::string		type;
+		std::string		_type;
 
 	public:
 		Weapon(std::string str);
 		~Weapon(void);
 		
-		const std::string	&getType(void);
+		const std::string	&getType(void) const;
 		void			setType(std::string new_value);
 };
 
