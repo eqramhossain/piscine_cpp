@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 21:03:52 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/18 17:44:17 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/20 13:21:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,5 @@ int	main(void)
 // this is illegal int	&ref;
 //
 // a reference cannot change target
+// References are used to avoid copying of data, making the function more efficient
+// especially with large objects. They allow functions to modify the original variable directly
