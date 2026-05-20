@@ -5,18 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/17 02:41:42 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/17 02:42:16 by ehossain         ###   ########.fr        #
+#    Created: 2026/05/19 14:28:59 by ehossain          #+#    #+#              #
+#    Updated: 2026/05/19 15:10:52 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= 
-CXX= c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -g3
-
-SRC= main.cpp\
-
-OBJ= $(SRC:.cpp=.o)
+NAME = a.out
+SRC = main.cpp\
+	  Fixed.cpp
+OBJ = $(SRC:.cpp=.o)
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

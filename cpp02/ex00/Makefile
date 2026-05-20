@@ -5,19 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/17 02:22:54 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/17 02:43:07 by ehossain         ###   ########.fr        #
+#    Created: 2026/05/19 14:28:59 by ehossain          #+#    #+#              #
+#    Updated: 2026/05/19 15:10:52 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= My_First_Class_in_Orthodox_Canonical_Form
-CXX= c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
-
-SRC= main.cpp\
-     Fixed.cpp
-
-OBJ= $(SRC:.cpp=.o)
+NAME = a.out
+SRC = main.cpp\
+	  Fixed.cpp
+OBJ = $(SRC:.cpp=.o)
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

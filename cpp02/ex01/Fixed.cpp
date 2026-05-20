@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:33:24 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/19 16:32:47 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/19 19:37:06 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 Fixed::Fixed(): _fixed_nb(0)
 {
 	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int	nb): _fixed_nb(nb << 8)
+{
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float nb)
+{
+	std::cout << "float constructor called" << std::endl;
+	_fixed_nb = ;
 }
 
 Fixed::Fixed(const Fixed &other)
