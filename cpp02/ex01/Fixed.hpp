@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:33:35 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/19 18:52:04 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/20 21:02:17 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,17 @@
 class	Fixed
 {
 	private:
-		int					_fixed_nb;
-		static const int	_bits = 8;
-
+		int					fixed_point_nuber;
+		static const int	fractional_bits = 0;
 	public:
-		Fixed();
-		Fixed(const int	nb);
-		Fixed(const float nb);
-		Fixed(const Fixed &other);
-		Fixed &operator=(const Fixed &other);
-		~Fixed();
+		Fixed();						// default constructor
+		Fixed(Fixed &copy);				// copy constructor
+		~Fixed();						// default destructor
+
+		Fixed &operator=(Fixed const &rhs);	// copy assignment operator overload
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-		float	toFloat(void) const;
-		int		toInt(void) const;
 };
-
-std::ostream		&operator<<(std::ostream &out, const Fixed &other);
 
 #endif
