@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 17:05:47 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/17 02:08:30 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/20 17:47:09 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@
 
 void	Harl::complain(std::string input)
 {
-	std::string	levels[4];
+	std::string	levels[4] =
+	{
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"
+	};
 
-	levels[0] = "DEBUG";
-	levels[1] = "INFO";
-	levels[2] = "WARNING";
-	levels[3] = "ERROR";
-
-	ekram	func[4];
-
-	func[0] = &Harl::debug;
-	func[1] = &Harl::info;
-	func[2] = &Harl::warning;
-	func[3] = &Harl::error;
+	void	(Harl::*func[4])(void) =
+	{
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
 
 	int i = 0;
 	while (i < 4)
