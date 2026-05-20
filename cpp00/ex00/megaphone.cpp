@@ -6,20 +6,21 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 12:04:55 by ehossain          #+#    #+#             */
-/*   Updated: 2026/04/13 13:31:56 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/20 12:32:50 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cctype>
 
-int ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-	{
-		c = c - 32;
-	}
-	return (c);
-}
+// char ft_toupper(char c)
+// {
+// 	if (c >= 'a' && c <= 'z')
+// 	{
+// 		c = c - 32;
+// 	}
+// 	return (c);
+// }
 
 int main(int ac, char **av)
 {
@@ -37,7 +38,7 @@ int main(int ac, char **av)
 		j = 0;
 		while(av[i][j])
 		{
-			av[i][j] = ft_toupper(av[i][j]);
+			av[i][j] = std::toupper(static_cast<unsigned char>(av[i][j]));
 			j++;
 		}
 		std::cout << av[i];

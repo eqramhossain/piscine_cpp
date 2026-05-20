@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/21 17:30:24 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/18 16:51:19 by ehossain         ###   ########.fr        #
+#    Updated: 2026/05/20 12:09:32 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,6 @@ clean:
 fclean: clean
 	rm -f megaphone
 
-re: clean fclean all
+re: fclean all
 
 .PHONY: re clean fclean all
