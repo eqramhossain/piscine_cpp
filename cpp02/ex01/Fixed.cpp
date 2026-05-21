@@ -6,33 +6,41 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 14:33:24 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/21 17:33:17 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/21 20:29:15 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
-Fixed::Fixed() : _fixed_point_nuber(0)
+Fixed::Fixed(): _fixed_point_nuber(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(int const nb)
 {
+	this->_fixed_point_nuber = (int)roundf((nb * (1 << _fractional_bits)));
 	std::cout << "Int constructor called" << std::endl;
-	std::cout << nb << std::endl;
+}
+
+int		Fixed::toInt(void) const
+{
+	return ((int)roundf(this->_fixed_point_nuber / (1 << _fractional_bits)));
 }
 
 Fixed::Fixed(float const nb)
 {
-	std::cout << "Float constructor called" << std::endl;
-	std::cout << nb << std::endl;
+	this->_fixed_point_nuber = (int)roundf(nb * (1 << _fractional_bits));
+	std::cout << "Float constructor called" << std::endl;}
+
+float	Fixed::toFloat(void) const
+{
+	return((float)this->_fixed_point_nuber / (float)(1 << this->_fractional_bits));
 }
 
-// does it needs to be copy the var here either way it will call the 
-// operator overload function
 Fixed::Fixed(Fixed const &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;
@@ -62,20 +70,8 @@ void	Fixed::setRawBits(int const raw)
 	this->_fixed_point_nuber = raw;
 }
 
-float	Fixed::toFloat(void) const
-{
-	std::cout << "toFloat called" << std::endl;
-	return (42.42f);
-}
-
-int		Fixed::toInt(void) const
-{
-	std::cout << "toInt called" << std::endl;
-	return (42);
-}
-
 std::ostream		&operator<<(std::ostream &os, Fixed const &rhs)
 {
-	os << rhs.getRawBits() << std::endl;
+	os << rhs.toFloat();
 	return (os);
 }
