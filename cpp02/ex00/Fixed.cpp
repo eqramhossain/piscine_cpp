@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 20:27:29 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/21 15:58:57 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:35:46 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ Fixed::Fixed() : fixed_point_nuber(0)
 
 // does it needs to be copy the var here either way it will call the 
 // operator overload function
-Fixed::Fixed(Fixed &copy) : fixed_point_nuber(copy.fixed_point_nuber)
+Fixed::Fixed(Fixed &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	// *this = copy;
+	*this = copy;
 }
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
