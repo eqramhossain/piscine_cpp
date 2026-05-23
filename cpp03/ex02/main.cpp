@@ -6,63 +6,63 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:41:13 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/23 17:29:33 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/23 19:15:42 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
-int	main(void)
+int main(void)
 {
-	std::cout << "===== ScavTrap Tests =====" << std::endl;
+	std::cout << "===== FragTrap Tests =====" << std::endl;
 
-	ScavTrap	s1("Guardian");
-	ScavTrap	s2(s1);
-
-	s1.printScavTrap();
-	s2.printScavTrap();
-	s2.setName("ekram");
-	s2.printScavTrap();
-	std::cout << std::endl;
-
-	s1.attack("Enemy");
-	s1.guardGate();
+	// Default constructor
+	FragTrap a;
 
 	std::cout << std::endl;
 
-	s1.takeDamage(30);
-	s1.beRepaired(10);
+	// Parameterized constructor
+	FragTrap b("Pizza");
 
 	std::cout << std::endl;
 
-	ScavTrap	s3;
-	s3 = s1;
-
-	std::cout << "Name: " << s3.getName() << std::endl;
-	std::cout << "HP: " << s3.getHitPoints() << std::endl;
-	std::cout << "Energy: " << s3.getEnergyPoints() << std::endl;
-	std::cout << "Attack: " << s3.getAttackDamage() << std::endl;
+	// Copy constructor
+	FragTrap c(b);
 
 	std::cout << std::endl;
 
-	std::cout << "===== Energy Test =====" << std::endl;
-
-	for (int i = 0; i < 51; i++)
-		s1.attack("Target");
-
-	std::cout << std::endl;
-
-	std::cout << "===== Death Test =====" << std::endl;
-
-	s1.takeDamage(200);
-	s1.attack("Target");
-	s1.beRepaired(20);
-	s1.guardGate();
+	// Copy assignment operator
+	FragTrap d;
+	d = b;
 
 	std::cout << std::endl;
 
-	std::cout << "===== End of Program =====" << std::endl;
+	// Basic actions
+	b.attack("Pasta");
+	b.takeDamage(40);
+	b.beRepaired(20);
+
+	std::cout << std::endl;
+
+	// Special FragTrap function
+	b.highFivesGuys();
+
+	std::cout << std::endl;
+
+	// Energy / HP stress test
+	for (int i = 0; i < 5; i++)
+		b.attack("Target Dummy");
+
+	std::cout << std::endl;
+
+	b.takeDamage(200); // should kill the FragTrap
+	b.attack("Another Enemy"); // test behavior when dead
+	b.beRepaired(50); // test repair when dead
+
+	std::cout << std::endl;
+
+	std::cout << "===== End of Tests =====" << std::endl;
 
 	return (0);
 }
