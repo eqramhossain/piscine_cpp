@@ -6,15 +6,18 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/17 02:42:44 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/17 02:42:52 by ehossain         ###   ########.fr        #
+#    Updated: 2026/05/23 17:36:48 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= 
+NAME= FragTrap
 CXX= c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -g3
 
 SRC= main.cpp\
+	 ClapTrap.cpp\
+	 ScavTrap.cpp\
+	 FragTrap.cpp
 
 OBJ= $(SRC:.cpp=.o)
 
