@@ -25,14 +25,25 @@ class	ClapTrap
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string name);
-		ClapTrap(ClapTrap &rhs);
+		ClapTrap(std::string const name);
+		ClapTrap(ClapTrap const &rhs);
 		~ClapTrap(void);
-		ClapTrap	&operator=(ClapTrap &rhs);
+		ClapTrap	&operator=(ClapTrap const &rhs);
 
 		void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+
+		void	setName(std::string name);
+		void	setHitPoints(unsigned int hit_point);
+		void	setEnergyPoints(unsigned int energy_point);
+		void	setAttackDamage(unsigned int attack_damage);
+
+		std::string		getName(void) const;
+		unsigned int 	getHitPoints(void) const;
+		unsigned int	getEnergyPoints(void) const;
+		unsigned int	getAttackDamage(void) const;
+
 };
 
 #endif
