@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:25:45 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/23 20:51:28 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/24 13:13:22 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	Dog : public Animal
 		Dog(Dog const &rhs);
 		Dog	&operator=(Dog const &rhs);
 		
-		void	makeSound();
+		void	makeSound() const;
 };
 
 

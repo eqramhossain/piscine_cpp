@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:25:07 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/23 20:45:20 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/24 13:13:14 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	Cat : public Animal
 		Cat(Cat const &rhs);
 		Cat	&operator=(Cat const &rhs);
 		
-		void	makeSound();
+		void	makeSound() const;
 };
 
 #endif

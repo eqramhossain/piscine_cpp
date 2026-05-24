@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:42:31 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/23 20:49:07 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/24 13:13:30 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Cat	&Cat::operator=(Cat const &rhs)
 	return (*this);
 }
 
-void	Cat::makeSound(void)
+void	Cat::makeSound() const
 {
 	std::cout << "Meow Meow" << std::endl;
 }

@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/17 02:42:44 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/23 20:26:30 by ehossain         ###   ########.fr        #
+#    Updated: 2026/05/24 15:30:01 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -g3
 SRC= main.cpp\
 	 Cat.cpp\
 	 Dog.cpp\
-	 Animal.cpp
+	 Animal.cpp\
+	 WrongCat.cpp\
+	 WrongAnimal.cpp
 
 OBJ= $(SRC:.cpp=.o)
 
