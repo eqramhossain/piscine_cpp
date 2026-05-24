@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/17 02:42:44 by ehossain          #+#    #+#              #
-#    Updated: 2026/05/24 15:30:01 by ehossain         ###   ########.fr        #
+#    Updated: 2026/05/24 16:56:59 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC= main.cpp\
 	 Dog.cpp\
 	 Animal.cpp\
 	 WrongCat.cpp\
-	 WrongAnimal.cpp
+	 WrongAnimal.cpp\
+	 Brain.cpp
 
 OBJ= $(SRC:.cpp=.o)
 

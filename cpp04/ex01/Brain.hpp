@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 20:25:45 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 19:01:23 by ehossain         ###   ########.fr       */
+/*   Created: 2026/05/24 16:03:13 by ehossain          #+#    #+#             */
+/*   Updated: 2026/05/24 18:46:45 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	DOG_HPP
-#define DOG_HPP
+#ifndef Brain_hpp
+#define Brain_hpp
 
-#include "Animal.hpp"
-#include "Brain.hpp"
 #include <string>
 
-class	Dog : public Animal
+class Brain
 {
 	private:
-		Brain *_brain;
+		std::string		_ideas[100];
 
 	public:
-		Dog();
-		Dog(std::string const type);
-		~Dog();
+		Brain();
+		~Brain();
 
-		Dog(Dog const &rhs);
-		Dog	&operator=(Dog const &rhs);
-		
-		void	makeSound() const;
+		Brain(Brain const &rhs);
+		Brain &operator=(Brain const &rhs);
 
 		void	setIdea(int id, std::string const idea);
-		void	getIdea(void) const;
-
-		void	printBrainAddress() const;
+		std::string getIdea(int id) const;
+	
 };
-
 
 #endif
