@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 19:00:43 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/25 16:37:11 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:52:35 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ ClapTrap::~ClapTrap()
 ClapTrap::ClapTrap(ClapTrap const &rhs) :
 	_name(rhs._name), _hit_point(rhs._hit_point), _energy_point(rhs._energy_point), _attack_damage(rhs._attack_damage)
 {
-	std::cout << "Copy constructor called, copy from ClapTrap " << rhs._name << std::endl;
+	std::cout << "ClapTrap Copy constructor called, copy from " << rhs._name << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &rhs)
 {
-	std::cout << "Copy assignment operator called, copy from ClapTrap " << rhs._name << std::endl;
+	std::cout << "ClapTrap Copy assignment operator called, copy from " << rhs._name << std::endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
