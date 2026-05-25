@@ -6,63 +6,46 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:41:13 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/23 19:15:42 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/25 19:14:58 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
 
-int main(void)
+#include "FragTrap.hpp"
+
+int	main(void)
 {
-	std::cout << "===== FragTrap Tests =====" << std::endl;
+	std::cout << "===== Creating FragTrap =====" << std::endl;
+	FragTrap frag("Fraggy");
 
-	// Default constructor
-	FragTrap a;
+	std::cout << "\n===== Initial attack =====" << std::endl;
+	frag.attack("Bandit");
 
-	std::cout << std::endl;
+	std::cout << "\n===== Taking damage =====" << std::endl;
+	frag.takeDamage(40);
 
-	// Parameterized constructor
-	FragTrap b("Pizza");
+	std::cout << "\n===== Repairing =====" << std::endl;
+	frag.beRepaired(20);
 
-	std::cout << std::endl;
+	std::cout << "\n===== Special ability =====" << std::endl;
+	frag.highFivesGuys();
 
-	// Copy constructor
-	FragTrap c(b);
+	std::cout << "\n===== Multiple attacks =====" << std::endl;
+	frag.attack("Enemy1");
+	frag.attack("Enemy2");
+	frag.attack("Enemy3");
 
-	std::cout << std::endl;
+	std::cout << "\n===== Heavy damage =====" << std::endl;
+	frag.takeDamage(90);
 
-	// Copy assignment operator
-	FragTrap d;
-	d = b;
+	std::cout << "\n===== Dead FragTrap behavior =====" << std::endl;
+	frag.attack("Nobody");
+	frag.beRepaired(10);
+	frag.highFivesGuys();
 
-	std::cout << std::endl;
-
-	// Basic actions
-	b.attack("Pasta");
-	b.takeDamage(40);
-	b.beRepaired(20);
-
-	std::cout << std::endl;
-
-	// Special FragTrap function
-	b.highFivesGuys();
-
-	std::cout << std::endl;
-
-	// Energy / HP stress test
-	for (int i = 0; i < 5; i++)
-		b.attack("Target Dummy");
-
-	std::cout << std::endl;
-
-	b.takeDamage(200); // should kill the FragTrap
-	b.attack("Another Enemy"); // test behavior when dead
-	b.beRepaired(50); // test repair when dead
-
-	std::cout << std::endl;
-
-	std::cout << "===== End of Tests =====" << std::endl;
+	std::cout << "\n===== End of program =====" << std::endl;
 
 	return (0);
 }
