@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:33:36 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/23 17:24:55 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:56:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class	ScavTrap : public ClapTrap
 
 		void	attack(std::string const &target);
 		void	guardGate(void);
-		void	printScavTrap(void);
+		// void	printScavTrap(void);
 };
 
 #endif

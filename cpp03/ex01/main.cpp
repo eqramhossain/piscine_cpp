@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:41:13 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/25 16:48:41 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/25 19:02:56 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	main(void)
 	ScavTrap	s1("Guardian");
 	ScavTrap	s2(s1);
 
-	s1.printScavTrap();
-	s2.printScavTrap();
+	// s1.printScavTrap();
+	// s2.printScavTrap();
 	// s2.setName("ekram");
-	s2.printScavTrap();
+	// s2.printScavTrap();
 	std::cout << std::endl;
 
 	s1.attack("Enemy");
@@ -55,7 +55,8 @@ int	main(void)
 
 	std::cout << "===== Death Test =====" << std::endl;
 
-	s1.takeDamage(200);
+	s1.takeDamage(50);
+	s1.takeDamage(50);
 	s1.attack("Target");
 	s1.beRepaired(20);
 	s1.guardGate();

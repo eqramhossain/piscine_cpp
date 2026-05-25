@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:34:35 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/25 16:53:05 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:57:35 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ ScavTrap::~ScavTrap(void)
 ScavTrap::ScavTrap(ScavTrap const &rhs) : ClapTrap(rhs)
 {
 	// copy only ScavTrap-specific fields here (if any)
-	std::cout << "ScavTrap Copy constructor called, copy from " << rhs._name << std::endl;
+	std::cout << "ScavTrap Copy constructor called" << std::endl;
 }
 
 ScavTrap	&ScavTrap::operator=(ScavTrap const &rhs)
 {
-	std::cout << "ScavTrap Copy assignment operator called, copy from " << rhs._name << std::endl;
+	std::cout << "ScavTrap Copy assignment operator called" << std::endl;
 
 	if (this != &rhs)
 	{
@@ -84,10 +84,10 @@ void	ScavTrap::guardGate(void)
 	std::cout << "ScavTrap is now in Gate keeper mode" << std::endl;
 }
 
-void	ScavTrap::printScavTrap(void)
-{
-	std::cout << "name = " << this->_name << std::endl;
-	std::cout << "hit_point = " << this->_hit_point << std::endl;
-	std::cout << "energy_point = " << this->_energy_point << std::endl;
-	std::cout << "attack_damage = " << this->_attack_damage << std::endl;
-}
+// void	ScavTrap::printScavTrap(void)
+// {
+// 	std::cout << "name = " << this->_name << std::endl;
+// 	std::cout << "hit_point = " << this->_hit_point << std::endl;
+// 	std::cout << "energy_point = " << this->_energy_point << std::endl;
+// 	std::cout << "attack_damage = " << this->_attack_damage << std::endl;
+// }
