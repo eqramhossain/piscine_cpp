@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 19:00:43 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/25 18:52:35 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:59:53 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hit_point = 0;
 		std::cout << "ClapTrap " << this->_name;
 		std::cout << " has no more hit_points, can't take damage" << std::endl;
+		return ;
 	}
 	else
 	{
