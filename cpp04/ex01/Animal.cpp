@@ -6,21 +6,21 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:32:14 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/26 14:48:32 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/24 15:50:38 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal() : _type("Animal")
+Animal::Animal() : _type("")
 {
 	std::cout << "Animal Default constructor called" << std::endl;
 }
 
 Animal::Animal(std::string const type) : _type(type)
 {
-	std::cout << "Animal Parameterized constructor called" << std::endl;
+	std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::~Animal()
@@ -28,9 +28,11 @@ Animal::~Animal()
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-Animal::Animal(Animal const &rhs): _type(rhs._type)
+
+Animal::Animal(Animal const &rhs)
 {
 	std::cout << "Animal copy constructor called" << std::endl;
+	*this = rhs;
 }
 
 Animal	&Animal::operator=(Animal const &rhs)

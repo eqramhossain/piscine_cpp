@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:25:45 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 13:13:22 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/24 19:01:23 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <string>
 
 class	Dog : public Animal
 {
+	private:
+		Brain *_brain;
+
 	public:
 		Dog();
 		Dog(std::string const type);
@@ -27,6 +31,11 @@ class	Dog : public Animal
 		Dog	&operator=(Dog const &rhs);
 		
 		void	makeSound() const;
+
+		void	setIdea(int id, std::string const idea);
+		void	getIdea(void) const;
+
+		void	printBrainAddress() const;
 };
 
 
