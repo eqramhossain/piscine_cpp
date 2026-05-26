@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:50:28 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 13:13:32 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:45:08 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "Animal.hpp"
 #include <iostream>
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : Animal()
 {
+	_type = "Dog";
 	std::cout << "Dog Default constructor called" << std::endl;
 }
 
 Dog::Dog(std::string const type) : Animal(type)
 {
-	std::cout << "Dog constructor called" << std::endl;
+	std::cout << "Dog parameterized constructor called" << std::endl;
 }
 
 Dog::~Dog()
@@ -32,7 +33,6 @@ Dog::~Dog()
 Dog::Dog(Dog const &rhs) : Animal(rhs)
 {
 	std::cout << "Dog copy constructor called" << std::endl;
-	*this = rhs;
 }
 
 Dog	&Dog::operator=(Dog const &rhs)

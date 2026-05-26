@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 13:31:12 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 15:58:16 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:57:03 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include "WrongAnimal.hpp"
 #include <iostream>
 
-WrongCat::WrongCat() : _type("Cat")
+WrongCat::WrongCat() : WrongAnimal()
 {
+	_type = "Cat";
 	std::cout << "WrongCat Default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(std::string const type) : _type(type)
+WrongCat::WrongCat(std::string const type) : WrongAnimal(type)
 {
 	std::cout << "WrongCat constructor called" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:49:20 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 15:56:54 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:49:45 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	main(void)
 	j->makeSound();
 	i->makeSound();
 
+	std::cout << "\n========== DESTRUCTION ==========\n" << std::endl;
+	delete meta;
+	delete j;
+	delete i;
+
 	std::cout << "\n========== WRONG ANIMAL TEST ==========\n" << std::endl;
 
 	const WrongAnimal*	wrong = new WrongAnimal();
@@ -54,9 +59,6 @@ int	main(void)
 
 	std::cout << "\n========== DELETION ==========\n" << std::endl;
 
-	delete meta;
-	delete j;
-	delete i;
 
 	delete wrong;
 	delete wrongCat;
