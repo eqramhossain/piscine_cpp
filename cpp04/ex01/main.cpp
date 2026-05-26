@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:49:20 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 19:00:33 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 16:00:37 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,20 @@ int	main(void)
 	copiedDog.printBrainAddress();
 
 	std::cout << "\nOriginal Dog ideas BEFORE modification:\n" << std::endl;
-	originalDog.getIdea();
+	originalDog.printIdea(0);
 
 	std::cout << "\nCopied Dog ideas BEFORE modification:\n" << std::endl;
-	copiedDog.getIdea();
+	copiedDog.printIdea(0);
 
 	std::cout << "\n========== MODIFY ORIGINAL DOG ==========\n" << std::endl;
 
 	originalDog.setIdea(0, "Destroy sofa");
 
 	std::cout << "\nOriginal Dog ideas AFTER modification:\n" << std::endl;
-	originalDog.getIdea();
+	originalDog.printIdea(0);
 
 	std::cout << "\nCopied Dog ideas (must stay unchanged):\n" << std::endl;
-	copiedDog.getIdea();
+	copiedDog.printIdea(0);
 
 	/* ******************************************************** */
 	/*                    CAT DEEP COPY                         */
@@ -126,20 +126,20 @@ int	main(void)
 	copiedCat.printBrainAddress();
 
 	std::cout << "\nOriginal Cat ideas BEFORE modification:\n" << std::endl;
-	originalCat.getIdea();
+	originalCat.printIdea(0);
 
 	std::cout << "\nCopied Cat ideas BEFORE modification:\n" << std::endl;
-	copiedCat.getIdea();
+	copiedCat.printIdea(0);
 
 	std::cout << "\n========== MODIFY ORIGINAL CAT ==========\n" << std::endl;
 
 	originalCat.setIdea(0, "Steal food");
 
 	std::cout << "\nOriginal Cat ideas AFTER modification:\n" << std::endl;
-	originalCat.getIdea();
+	originalCat.printIdea(0);
 
 	std::cout << "\nCopied Cat ideas (must stay unchanged):\n" << std::endl;
-	copiedCat.getIdea();
+	copiedCat.printIdea(0);
 
 	std::cout << "\n========== END OF PROGRAM ==========\n" << std::endl;
 

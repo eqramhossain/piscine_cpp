@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:42:31 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 19:03:26 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 15:55:37 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 #include <cstdlib>
 #include <cstdio>
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat() : Animal()
 {
+	std::cout << "Cat Default constructor called" << std::endl;
+	_type = "Cat";
 	_brain = new Brain();
 	if (this->_brain == NULL)
 	{
@@ -26,11 +28,11 @@ Cat::Cat() : Animal("Cat")
 		std::cerr << "Exiting the process now." << std::endl;
 		exit(1);
 	}
-	std::cout << "Cat Default constructor called" << std::endl;
 }
 
 Cat::Cat(std::string const type) : Animal(type)
 {
+	std::cout << "Cat constructor called" << std::endl;
 	_brain = new Brain();
 	if (this->_brain == NULL)
 	{
@@ -38,7 +40,6 @@ Cat::Cat(std::string const type) : Animal(type)
 		std::cerr << "Exiting the process now." << std::endl;
 		exit(1);
 	}
-	std::cout << "Cat constructor called" << std::endl;
 }
 
 Cat::~Cat()
@@ -50,7 +51,13 @@ Cat::~Cat()
 Cat::Cat(Cat const &rhs) : Animal(rhs)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	*this = rhs;
+	this->_brain = new Brain(*rhs._brain);
+	if (this->_brain == NULL)
+	{
+		perror("Cat Brain allocation failed");
+		std::cerr << "Exiting the process now." << std::endl;
+		exit(1);
+	}
 }
 
 Cat	&Cat::operator=(Cat const &rhs)
@@ -80,13 +87,10 @@ void	Cat::setIdea(int id, std::string const idea)
 	this->_brain->setIdea(id, idea);
 }
 
-void	Cat::getIdea(void) const
+void	Cat::printIdea(int id) const
 {
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << "Idea " << i << " of the Cat is: ";
-		std::cout << this->_brain->getIdea(i) << std::endl;
-	}
+		std::cout << "Idea " << id << " of the Cat is: ";
+		std::cout << this->_brain->getIdea(id) << std::endl;
 }
 
 void	Cat::printBrainAddress() const

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:25:45 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 19:01:23 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 15:59:44 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class	Dog : public Animal
 		void	makeSound() const;
 
 		void	setIdea(int id, std::string const idea);
-		void	getIdea(void) const;
+		void	printIdea(int id) const;
 
 		void	printBrainAddress() const;
 };
