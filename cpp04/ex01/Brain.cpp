@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 16:31:34 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 17:07:54 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 16:03:03 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	Brain::setIdea(int id, std::string const idea)
 	if (id < 100)
 		_ideas[id] = idea;
 	else
-		std::cout << "100 ideas per Brain" << std::endl;
+		std::cout << "Can't excedd 100 ideas" << std::endl;
 }
 
 std::string		Brain::getIdea(int id) const
@@ -57,5 +57,5 @@ std::string		Brain::getIdea(int id) const
 	if (id < 100) 
 		return (_ideas[id]);
 	else 
-		return ("100 ideas per Brain");
+		return ("Can't excedd 100 ideas");
 }
