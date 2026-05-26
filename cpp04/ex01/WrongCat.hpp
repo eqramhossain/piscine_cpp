@@ -6,21 +6,18 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 13:31:03 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 15:29:05 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:55:36 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONG_CAT_HPP
-#define WRONG_CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
 #include <string>
 
 class	WrongCat : public WrongAnimal
 {
-	protected:
-		std::string _type;
-
 	public:
 		WrongCat();
 		WrongCat(std::string const type);

@@ -6,14 +6,14 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 13:31:14 by ehossain          #+#    #+#             */
-/*   Updated: 2026/05/24 15:24:43 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:53:01 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 #include <iostream>
 
-WrongAnimal::WrongAnimal() : _type("")
+WrongAnimal::WrongAnimal() : _type("Animal")
 {
 	std::cout << "WrongAnimal Default constructor called" << std::endl;
 }
@@ -29,10 +29,9 @@ WrongAnimal::~WrongAnimal()
 }
 
 
-WrongAnimal::WrongAnimal(WrongAnimal const &rhs)
+WrongAnimal::WrongAnimal(WrongAnimal const &rhs): _type(rhs._type)
 {
 	std::cout << "WrongAnimal copy constructor called" << std::endl;
-	*this = rhs;
 }
 
 WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &rhs)
