@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:47:22 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/03 17:01:16 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/11 17:55:54 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int main(void)
 	{
 		Bureaucrat one("ekram", 149);
 		one.decrementGrade();
-		std::cout << one << std::endl;
-		Bureaucrat two(one);
-		std::cout << two << std::endl;
+		std::cout << one;
+		one.decrementGrade();
 	}
 	catch (std::exception &ex)
 	{
