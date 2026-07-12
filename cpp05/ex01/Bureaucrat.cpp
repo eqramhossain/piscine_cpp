@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:06:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/09 17:59:03 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:40:10 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 #include "Form.h"
 #include <iostream>
 
+Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(1)
+{
+	// std::cout << "Default Constructor Called Bureaucrat" << std::endl;
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	// std::cout << "Default Constructor called" << std::endl;
+	// std::cout << "Prarameterised Constructor called" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -79,11 +84,12 @@ void Bureaucrat::signForm(Form &form) const
 	{
 		form.beSigned(*this);
 	}
-	catch (const std::exception&) 
+	catch (const std::exception &e) 
 	{
-		std::cout << "Bureaucrat " << this->getName() << " couldn’t sign " << form.get_name() << " because " << "what is this" << std::endl;
+		std::cout << "Bureaucrat " << this->getName() << " couldn’t sign " << form.get_name() << " because " << e.what() << std::endl;
+		return ;
 	}
-	std::cout << "Bureaucrat " << this->getName() <<  " signed " << form.get_name() << std::endl;
+	std::cout << "Bureaucrat " << this->getName() <<  " signed Form " << form.get_name() << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw()

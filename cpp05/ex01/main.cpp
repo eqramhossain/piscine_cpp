@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:47:22 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/09 18:56:47 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:42:15 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@
 
 int main(void)
 {
-	std::cout << "\033[33m" << std::endl << "Test ex01" << "\033[0m" << std::endl;
 
-	Form id_form("ID FORM", 100, 90);
-	Bureaucrat mr_slow("mr_slow", 25);
-	Bureaucrat mr_id("MR_ID", 100);
-	std::cout << id_form;
-	
+	Form id_form("ID FORM", 1, 1);
+	std::cout << id_form << std::endl;
+
+	Bureaucrat mr_slow("mr_slow", 1);
 	mr_slow.signForm(id_form);
-	std::cout << id_form;
 
+	Bureaucrat mr_id("MR_ID", 111);
 	mr_id.signForm(id_form);
-	std::cout << id_form;
 	
 	return (0);	return (0);
 }

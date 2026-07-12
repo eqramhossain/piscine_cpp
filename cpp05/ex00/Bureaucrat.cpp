@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:06:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/11 17:54:43 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:26:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(1)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	// std::cout << "Parametaraized Constructor Called Bureaucrat" << std::endl;
+	// std::cout << "Parameteraized Constructor Called Bureaucrat" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)

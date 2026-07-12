@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:03:51 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/09 18:52:21 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:38:10 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 #include <string>
 #include <iostream>
 
-Form::Form(std::string name, int sign, int execute) : _name(name), _is_signed(false), _grade_sign(sign), _grade_execute(execute)
+Form::Form(void) : _name("Default"), _is_signed(false), _grade_sign(1), _grade_execute(1)
 {
 	// std::cout << "Default Constructor called" << std::endl;
+}
+
+Form::Form(std::string name, int sign, int execute) : _name(name), _is_signed(false), _grade_sign(sign), _grade_execute(execute)
+{
+	// std::cout << "Parameteraized Constructor called" << std::endl;
 }
 
 Form::Form(Form &rhs) : _name(rhs._name), _is_signed(rhs._is_signed), _grade_sign(rhs._grade_sign), _grade_execute(rhs._grade_execute)
@@ -62,7 +67,7 @@ int Form::get_execute_value(void) const
 
 void Form::beSigned(Bureaucrat const &bureaucrat)
 {
-	if (this->get_sign_value() >= bureaucrat.getGrade())
+	if (bureaucrat.getGrade() <= this->_grade_sign)
 	{
 		_is_signed = true;
 	}

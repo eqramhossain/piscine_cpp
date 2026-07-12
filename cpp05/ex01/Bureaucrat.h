@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:05:39 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/08 17:56:38 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:24:38 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ class Bureaucrat
 	std::string _name;
 	int _grade;
 
-  public:
+  public:	
+	Bureaucrat(void);
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(Bureaucrat &rhs);
 	Bureaucrat &operator=(Bureaucrat &rhs);

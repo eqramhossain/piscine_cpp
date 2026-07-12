@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:03:57 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/09 17:29:53 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:29:50 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Form
 	int const _grade_execute;
 
   public:
+	Form(void);
 	Form(std::string name, int sign, int execute);
 	Form(Form &rhs);
 	Form &operator=(Form &rhs);
