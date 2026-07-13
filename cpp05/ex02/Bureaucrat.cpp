@@ -6,12 +6,13 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:06:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 20:11:05 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/13 20:52:09 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.h"
 #include "AForm.h"
+#include <exception>
 #include <iostream>
 
 Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(1)
@@ -104,11 +105,17 @@ const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 
 void Bureaucrat::executeForm(AForm const & form) const
 {
-	if (form.canExecute(*this))
+	try
 	{
-		std::cout << this->_name << " executed " << form.get_name() << std::endl;
-		form.execute(*this);
+		form.canExecute(*this);
 	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " can't be executed " << form.get_name() << " because " << e.what() << std::endl;
+		return ;
+	}
+	form.execute(*this);
+	std::cout << this->_name << " executed " << form.get_name() << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat &rhs)

@@ -6,16 +6,14 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:36:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 20:06:37 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/13 20:52:31 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.h"
 #include "AForm.h"
-#include <cstring>
 #include <iostream>
 #include <ostream>
-#include <fstream>
 #include <string>
 
 ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("Default", 145, 137), _target("Default")
@@ -70,7 +68,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 			std::cout << "Error in creating file!" << std::endl;
 			return ;
 		}
-		MyFile << "*\n"
+		MyFile << "        *\n"
           "       ***\n"
           "      *****\n"
           "     *******\n"
