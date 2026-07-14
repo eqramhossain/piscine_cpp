@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:34:42 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 22:37:21 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/14 16:35:26 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ class	PresidentialPardonForm : public AForm
 		std::string _target;
 
 	public:
+		PresidentialPardonForm(void);
 		PresidentialPardonForm(std::string target);
-		// PresidentialPardonForm(PresidentialPardonForm &rhs);
-		// PresidentialPardonForm &operator=(PresidentialPardonForm &rhs);
+		PresidentialPardonForm(PresidentialPardonForm &rhs);
+		PresidentialPardonForm &operator=(PresidentialPardonForm &rhs);
 		~PresidentialPardonForm();
 
 		void virtual execute(Bureaucrat const &executor) const;

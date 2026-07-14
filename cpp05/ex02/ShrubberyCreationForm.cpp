@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:36:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 20:52:31 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/14 16:23:01 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm(target, 
 	std::cout << "Parameteraized Constuctor Called ShrubberyCreationForm" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &rhs): AForm(rhs)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &rhs): AForm(rhs), _target(rhs._target)
 {
 	std::cout << "Copy Constuctor Called ShrubberyCreationForm" << std::endl;
-	*this = rhs;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &rhs)
@@ -37,6 +36,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &r
 	std::cout << "Copy Operator Called ShrubberyCreationForm" << std::endl;
 	if (this != &rhs)
 	{
+		AForm::operator=(rhs);
 		this->_target = rhs._target;
 	}
 	return (*this);
