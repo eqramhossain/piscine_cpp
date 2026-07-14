@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 21:02:46 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/14 18:11:26 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/14 18:59:53 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 
     try
     {
-        AForm *form1 = intern.makeForm("shrubbery creation", "home");
+        AForm *form1 = intern.makeForm("SHRUBBERY CREATION", "home");
         std::cout << "Created form: " << form1->get_name() << std::endl;
     }
     catch (const std::exception &e)

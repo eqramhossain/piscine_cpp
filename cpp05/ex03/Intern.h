@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 17:02:20 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/14 17:53:57 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/14 18:59:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Intern
 		~Intern();
 
 		AForm *makeForm(std::string name, std::string target);
+		std::string stringLower(std::string name);
 		class FormNameException : public std::exception
 		{
 			public:

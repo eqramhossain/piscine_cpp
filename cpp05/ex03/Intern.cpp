@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 17:02:12 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/14 18:10:19 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/14 19:01:06 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,16 @@ AForm *Intern::callRobot(std::string target)
 	return new RobotmyRequestForm(target);
 }
 
+std::string Intern::stringLower(std::string str)
+{
+	for (int c = 0; c < int(str.length()); c++)
+	{
+		if (std::isupper(str[c]))
+			str[c] = char(std::tolower(str[c]));
+	}
+	return (str);
+}
+
 AForm *Intern::makeForm(std::string name, std::string target)
 {
 	int i = 0;
@@ -77,7 +87,7 @@ AForm *Intern::makeForm(std::string name, std::string target)
 
 	while (i < 3)
 	{
-		if (_form_name[i] == name)
+		if (_form_name[i] == stringLower(name))
 		{
 			return (this->*func[i])(target);
 		}
