@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 17:48:30 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/23 21:11:55 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:17:35 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #define SCALARCONVERTER_H
 
 #include <iostream>
-#include <stdbool.h>
+
+#define INT_MIN -2147483648
+#define INT_MAX 2147483647
 
 class ScalarConverter 
 {
@@ -24,10 +26,15 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter &rhs);
 		ScalarConverter &operator=(ScalarConverter &rhs);
 
-		static char convertToChar(std::string str);
-		static int convertToInt(std::string str);
-		static float convertToFloat(std::string str);
-		static double convertToDouble(std::string str);
+		static char convertChar(std::string str);
+		static int convertInt(std::string str);
+		static float convertFloat(std::string str);
+		static double convertDouble(std::string str);
+
+		static bool _char;
+		static bool _int;
+		static bool _float;
+		static bool _double;
 
 	public:
 		static void convert(std::string input);
