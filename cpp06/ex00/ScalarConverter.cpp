@@ -6,11 +6,12 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 17:49:02 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/25 17:28:27 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/25 20:07:48 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.h"
+#include <cctype>
 # include <iostream>
 # include <limits>
 # include <iomanip>
@@ -51,7 +52,7 @@ bool	isChar(std::string input)
 {
 	if (input.size() == 1)
 	{
-		if(std::isprint(input[0]) && !std::isdigit(input[0]))
+		if(std::isprint(input[0]))
 		{
 			return (true);
 		}
@@ -90,8 +91,13 @@ bool	isFloat(std::string input)
 	}
 	else 
 		return (false);
+
 	if (input[i] == '+' || input[i] == '-')
+	{
 		i++;
+		if (!isdigit(input[i]))
+			return (false);
+	}
 	while(input[i])
 	{
 		if (std::isdigit(input[i]) == 0)
@@ -121,7 +127,11 @@ bool	isDouble(std::string input)
 	if (input.size() < 3)
 		return (false);
 	if (input[i] == '+' || input[i] == '-')
+	{
 		i++;
+		if (!isdigit(input[i]))
+			return (false);
+	}
 	while(input[i])
 	{
 		if (std::isdigit(input[i]) == 0)
@@ -143,14 +153,14 @@ bool	isDouble(std::string input)
 
 char	ScalarConverter::convertChar(std::string input)
 {
-	if (isChar(input))
+	if (input.size() == 1 && std::isprint(input[0]))
 		return (static_cast<char>(input[0]));
 	if (input.size() > 1)
 	{
 		double var = std::atof(input.c_str());
 		if (var > std::numeric_limits<char>::max() || var < 0)
 			return (_char = false, -1);
-		else
+		else if (std::isprint(input[0]))
 			return (static_cast<char>(var));
 	}
 	return (_char = false, -1);
@@ -231,11 +241,7 @@ void	ScalarConverter::convert(std::string input)
 		return ;
 	}
 
-	// if (isChar(input) == false && isInt(input) == false && isFloat(input) == false && isDouble(input) == false)
-	// {
-	// 	std::cout << "does not support input type" << std::endl;
-	// 	return ;
-	// }
+
 
 	char c = convertChar(input);
 	int i = convertInt(input);
@@ -249,17 +255,17 @@ void	ScalarConverter::convert(std::string input)
 	else
 		std::cout << "char:\t\t" << c << std::endl;
 	
-	if (i == -1 && _int == false)
+	if (i == 0 && _int == false)
 		std::cout << "int:\t\timpossible" << std::endl;
 	else
 		std::cout << "int:\t\t" << i << std::endl;
 	
-	if (f == -1 && _float == false)
+	if (f == 0 && _float == false)
 		std::cout << "float:\t\timpossible" << std::endl;
 	else
 		std::cout << "float:\t\t" << std::setprecision(1) << std::fixed << f <<  "f" << std::endl;
 
-	if (d == -1 && _double == false)
+	if (d == 0 && _double == false)
 		std::cout << "double:\t\timpossible" << std::endl;
 	else
 		std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
