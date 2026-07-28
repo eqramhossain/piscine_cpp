@@ -1,12 +1,13 @@
 #ifndef SERIALIZATION_H
 #define SERIALIZATION_H
 
-#include <cstdint>
+#include <stdint.h>
+#include <string>
 
 struct  Data
 {
-    int             age = 42;
-    std::string     name = "Ekram";
+    int             age;
+    std::string     name;
 };
 
 class   Serialization
