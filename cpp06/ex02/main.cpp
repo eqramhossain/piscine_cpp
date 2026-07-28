@@ -6,10 +6,12 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 20:23:00 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/27 21:24:21 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/28 16:19:13 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include "Base.h"
 #include "A.h"
@@ -18,7 +20,24 @@
 
 Base	*generate(void)
 {
-	Base *ptr = new A;
+	int random = std::rand() % 3;
+	Base *ptr;
+
+	if (random == 0)
+	{
+		ptr = new A;
+		std::cout << "Generated: A" << std::endl;
+	}
+	if (random == 1)
+	{
+		ptr = new B;
+		std::cout << "Generated: B" << std::endl;
+	}
+	if (random == 2)
+	{	
+		ptr = new C;
+		std::cout << "Generated: C" << std::endl;
+	}
 
 	return (ptr);
 }
@@ -42,38 +61,47 @@ void	identify(Base *p)
 void	identify(Base &p)
 {
 	try {
-		A a = dynamic_cast<A&>(p);
+		dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
-	}
-	catch (const std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
 		return ;
 	}
+	catch (const std::exception &e)
+	{
+		// ignore
+	}
 	try {
-		B b = dynamic_cast<B&>(p);
+		dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
+		return ;
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		//ignore
 	}
 	try {
-		C c = dynamic_cast<C&>(p);
+		dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
+		return ;
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		//ignore
 	}
 }
 
 
 int	main(void)
 {
-	Base *ptr = generate();
+	std::srand(std::time(NULL));
 
-	identify(ptr);
-	identify(*ptr);
+	for (int i = 0; i < 10; i++) 
+	{
+		Base *ptr = generate();
+
+		identify(ptr);
+		identify(*ptr);
+
+		delete ptr;
+	}
 	return (0);
 }
