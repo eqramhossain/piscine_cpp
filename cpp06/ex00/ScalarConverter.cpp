@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 17:49:02 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/25 22:39:19 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/28 17:08:18 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <iomanip>
 # include <cstdlib>
 
-bool ScalarConverter::_char = false;
-bool ScalarConverter::_int = false;
-bool ScalarConverter::_float = false;
-bool ScalarConverter::_double = false;
+bool _char = false;
+bool _int = false;
+bool _float = false;
+bool _double = false;
 
 
 ScalarConverter::ScalarConverter(void)
@@ -84,6 +84,71 @@ bool	checkInput(std::string str)
 		return (true);
 	}
 	return (false);
+}
+
+char	convertChar(std::string input)
+{
+	_char = true;
+	if (input.size() == 1 && isChar(input) == true)
+		return (static_cast<char>(input[0]));
+	if (input.size() >= 1 && checkInput(input))
+	{
+		double var = std::atof(input.c_str());
+		if (var > std::numeric_limits<char>::max() || var <= 0)
+			return (_char = false, -1);
+		unsigned char c = static_cast<unsigned char>(var);
+		if (std::isprint(c) != 0)
+			return(c);
+	}
+	return (0);
+}
+
+int		convertInt(std::string input)
+{
+	_int = true;
+	if (isChar(input))
+		return (static_cast<int>(input[0]));
+	if (input.size() >= 1 && checkInput(input))
+	{
+		double var = std::atof(input.c_str());
+		if (var > std::numeric_limits<int>::max() || var < std::numeric_limits<int>::min())
+			return (_int = false, 0);
+		else 
+			return (static_cast<int>(var));
+	}	
+	return (_int = false, 0);
+}
+
+float	convertFloat(std::string input)
+{
+	_float = true;
+	if (isChar(input))
+		return (static_cast<float>(input[0]));
+	if (input.size() >= 1 && checkInput(input))
+	{
+		double var = std::atof(input.c_str());
+		if (var > std::numeric_limits<float>::max() || var < -std::numeric_limits<float>::max())
+			return (_float = false, 0);
+		else 
+			return (static_cast<float>(var));
+	}
+	return (_float = false, 0);
+}
+
+double	convertDouble(std::string input)
+{
+	_double = true;
+	if (isChar(input))
+		return (static_cast<double>(input[0]));
+	if (input.size() >= 1 && checkInput(input))
+	{
+		double var = std::atof(input.c_str());
+		if (var > std::numeric_limits<double>::max() || var < -std::numeric_limits<double>::max())
+			return (_double = false, 0);
+		else 
+			return (static_cast<double>(var));
+	}
+	return (_double = false, 0);
 }
 
 void	ScalarConverter::convert(std::string input)
@@ -150,69 +215,4 @@ void	ScalarConverter::convert(std::string input)
 		std::cout << "double:\t\timpossible" << std::endl;
 	else
 		std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
-}
-
-char	ScalarConverter::convertChar(std::string input)
-{
-	_char = true;
-	if (input.size() == 1 && std::isprint(input[0]))
-		return (static_cast<char>(input[0]));
-	if (input.size() >= 1 && checkInput(input))
-	{
-		double var = std::atof(input.c_str());
-		if (var > std::numeric_limits<char>::max() || var < 0)
-			return (_char = false, -1);
-		unsigned char c = static_cast<unsigned char>(var);
-		if (std::isprint(c) != 0)
-			return(c);
-	}
-	return (0);
-}
-
-int		ScalarConverter::convertInt(std::string input)
-{
-	_int = true;
-	if (isChar(input))
-		return (static_cast<int>(input[0]));
-	if (input.size() >= 1 && checkInput(input))
-	{
-		double var = std::atof(input.c_str());
-		if (var > std::numeric_limits<int>::max() || var < std::numeric_limits<int>::min())
-			return (_int = false, 0);
-		else 
-			return (static_cast<int>(var));
-	}	
-	return (_int = false, 0);
-}
-
-float	ScalarConverter::convertFloat(std::string input)
-{
-	_float = true;
-	if (isChar(input))
-		return (static_cast<float>(input[0]));
-	if (input.size() >= 1 && checkInput(input))
-	{
-		double var = std::atof(input.c_str());
-		if (var > std::numeric_limits<float>::max() || var < -std::numeric_limits<float>::max())
-			return (_float = false, 0);
-		else 
-			return (static_cast<float>(var));
-	}
-	return (_float = false, 0);
-}
-
-double	ScalarConverter::convertDouble(std::string input)
-{
-	_double = true;
-	if (isChar(input))
-		return (static_cast<double>(input[0]));
-	if (input.size() >= 1 && checkInput(input))
-	{
-		double var = std::atof(input.c_str());
-		if (var > std::numeric_limits<double>::max() || var < -std::numeric_limits<double>::max())
-			return (_double = false, 0);
-		else 
-			return (static_cast<double>(var));
-	}
-	return (_double = false, 0);
 }
