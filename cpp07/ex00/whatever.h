@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 20:42:29 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/28 21:12:50 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:33:44 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void swap(T &a, T &b)
 	T c = a;
 	a = b;
 	b = c;
-	// return (0);
 }
 
 template <typename T>

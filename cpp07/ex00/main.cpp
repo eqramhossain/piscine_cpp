@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 20:42:11 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/28 21:18:48 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:50:58 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int		main(void)
 	std::cout << "Max of 3.5 and 7.5 is :" << ::max<double>(3.5, 7.5) << std::endl;
 	std::cout << "Max of 'g' and 'e' is: " << ::max<char>('g', 'e') << std::endl;
 
-	std::cout << "Min of 3 and 7 is: " << ::min<int>(3, 7) << std::endl;
-	std::cout << "Min of 3.5 and 7.5 is :" << ::min<double>(3.5, 7.5) << std::endl;
-	std::cout << "Min of 'g' and 'e' is: " << ::min<char>('g', 'e') << std::endl;
+	std::cout << "Min of 3 and 7 is: " << ::min(3, 7) << std::endl;
+	std::cout << "Min of 3.5 and 7.5 is :" << ::min(3.5, 7.5) << std::endl;
+	std::cout << "Min of 'g' and 'e' is: " << ::min('g', 'e') << std::endl;
 
 	int a = 3, b = 7;
 	std::cout << "Before Swap" << std::endl;
