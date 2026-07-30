@@ -6,13 +6,19 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 12:49:31 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/29 20:17:54 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/07/30 11:46:55 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "iter.h"
 #include <string>
+
+template <typename T>
+void ft_foo(T &params)
+{
+	std::cout << params << std::endl;
+}
 
 class Test
 {
@@ -27,7 +33,6 @@ class Test
 			std::cout << "Test value: " << _value << std::endl;
 		}
 };
-
 
 void ft_test_class(Test &obj)
 {
