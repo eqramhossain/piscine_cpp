@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 17:49:02 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/28 17:08:18 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:14:33 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,23 @@ bool _double = false;
 
 ScalarConverter::ScalarConverter(void)
 {
-	std::cout << "Default Constructor Called ScalarConverter" << std::endl;
+	// std::cout << "Default Constructor Called ScalarConverter" << std::endl;
 }
 
 ScalarConverter::~ScalarConverter(void)
 {
-	std::cout << "Destructor Called ScalarConverter" << std::endl;
+	// std::cout << "Destructor Called ScalarConverter" << std::endl;
 }
 
-ScalarConverter::ScalarConverter(ScalarConverter &rhs)
+ScalarConverter::ScalarConverter(const ScalarConverter &rhs)
 {
-	std::cout << "Copy Constructor Called ScalarConverter" << std::endl;
+	// std::cout << "Copy Constructor Called ScalarConverter" << std::endl;
 	*this = rhs;
 }
 
-ScalarConverter &ScalarConverter::operator=(ScalarConverter &rhs)
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs)
 {
-	std::cout << "Copy assignment operator called ScalarConverter" << std::endl;
+	// std::cout << "Copy assignment operator called ScalarConverter" << std::endl;
 	if (this != &rhs)
 	{
 		//nothing to copy here
@@ -94,7 +94,7 @@ char	convertChar(std::string input)
 	if (input.size() >= 1 && checkInput(input))
 	{
 		double var = std::atof(input.c_str());
-		if (var > std::numeric_limits<char>::max() || var <= 0)
+		if (var > std::numeric_limits<char>::max() || var < 0)
 			return (_char = false, -1);
 		unsigned char c = static_cast<unsigned char>(var);
 		if (std::isprint(c) != 0)
@@ -173,7 +173,6 @@ void	ScalarConverter::convert(std::string input)
 	}
 	if ((input.compare("nanf") == 0) || (input.compare("nan") == 0))
 	{
-		std::cout << input << std::endl;
 		std::cout << "char: " << "impossible" << std::endl;
 		std::cout << "int: " << "impossible" << std::endl;
 		std::cout << "float: " << "nanf" << std::endl;
