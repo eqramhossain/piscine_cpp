@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:36:26 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/14 16:33:15 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:02:20 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,28 @@
 
 RobotmyRequestForm::RobotmyRequestForm(void) : AForm("Default", 72, 45), _target("Default")
 {
-	std::cout << "Default Constructor Called RobotmyRequestForm" << std::endl;
+	// std::cout << "Default Constructor Called RobotmyRequestForm" << std::endl;
 }
 
 RobotmyRequestForm::RobotmyRequestForm(std::string target) : AForm(target, 72, 45), _target(target)
 {
-	std::cout << "Parameterazied Constructor Called RobotmyRequestForm" << std::endl;
+	// std::cout << "Parameterazied Constructor Called RobotmyRequestForm" << std::endl;
 }
 
 RobotmyRequestForm::~RobotmyRequestForm()
 {
-	std::cout << "Destructor Called RobotmyRequestForm" << std::endl;
+	// std::cout << "Destructor Called RobotmyRequestForm" << std::endl;
 }
 
 RobotmyRequestForm::RobotmyRequestForm(RobotmyRequestForm &rhs) : AForm(rhs), _target(rhs._target)
 {
-	std::cout << "Copy Constructor Called RobotmyRequestForm" << std::endl;
+	// std::cout << "Copy Constructor Called RobotmyRequestForm" << std::endl;
 }
 
 RobotmyRequestForm &RobotmyRequestForm::operator=(RobotmyRequestForm &rhs)
 {
 
-	std::cout << "Copy Assignment operator Called RobotmyRequestForm" << std::endl;
+	// std::cout << "Copy Assignment operator Called RobotmyRequestForm" << std::endl;
 	if (this != &rhs)
 	{
 		AForm::operator=(rhs);
@@ -62,8 +62,7 @@ void RobotmyRequestForm::execute(Bureaucrat const &executor) const
 		}
 		else 
 		{
-			std::cout << "Making some driling noise " << this->_target << " has been robotomized successfully \
-				50% of the time" << std::endl;
+			std::cout << "Making some driling noise " << this->_target << " has been robotomized successfully 50\% of the time" << std::endl;
 		}
 	}
 }

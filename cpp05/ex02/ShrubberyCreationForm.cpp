@@ -6,34 +6,35 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:36:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/14 16:23:01 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:04:58 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.h"
 #include "AForm.h"
+#include <cstring>
 #include <iostream>
 #include <ostream>
 #include <string>
 
 ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("Default", 145, 137), _target("Default")
 {
-	std::cout << "Default Constuctor Called ShrubberyCreationForm" << std::endl;
+	// std::cout << "Default Constuctor Called ShrubberyCreationForm" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm(target, 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target): AForm(target, 145, 137), _target(target)
 {
-	std::cout << "Parameteraized Constuctor Called ShrubberyCreationForm" << std::endl;
+	// std::cout << "Parameteraized Constuctor Called ShrubberyCreationForm" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &rhs): AForm(rhs), _target(rhs._target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs): AForm(rhs), _target(rhs._target)
 {
-	std::cout << "Copy Constuctor Called ShrubberyCreationForm" << std::endl;
+	// std::cout << "Copy Constuctor Called ShrubberyCreationForm" << std::endl;
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &rhs)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {
-	std::cout << "Copy Operator Called ShrubberyCreationForm" << std::endl;
+	// std::cout << "Copy Operator Called ShrubberyCreationForm" << std::endl;
 	if (this != &rhs)
 	{
 		AForm::operator=(rhs);
@@ -44,7 +45,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm &r
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	std::cout << "Destructor Called ShrubberyCreationForm" << std::endl;
+	// std::cout << "Destructor Called ShrubberyCreationForm" << std::endl;
 }
 
 std::string ShrubberyCreationForm::get_target(void) const
@@ -61,7 +62,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	else 
 	{
 		std::ofstream MyFile;
-		MyFile.open("test");
+		std::string fileName = this->_target;
+		fileName.append("_shrubbery");
+		MyFile.open(fileName.c_str());
 
 		if (!MyFile.is_open())
 		{

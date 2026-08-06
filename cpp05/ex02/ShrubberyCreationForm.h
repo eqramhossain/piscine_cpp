@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:33:41 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 20:06:01 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:04:38 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class	ShrubberyCreationForm : public AForm
 
 	public:
 		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(ShrubberyCreationForm &rhs);
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm &rhs);
+		ShrubberyCreationForm(const std::string target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &rhs);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 		~ShrubberyCreationForm(void);
 
 		std::string get_target(void) const;
