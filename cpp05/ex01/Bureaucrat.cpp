@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:06:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/12 17:40:10 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:35:10 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(1)
 	// std::cout << "Default Constructor Called Bureaucrat" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	// std::cout << "Prarameterised Constructor called" << std::endl;
 	if (grade < 1)
@@ -30,18 +30,16 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat &rhs)
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : _name(rhs._name), _grade(rhs._grade)
 {
 	// std::cout << "Copy Constructor called" << std::endl;
-	*this = rhs;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat &rhs)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
 	// std::cout << "Copy Assignment operator called" << std::endl;
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
 	}
 	return (*this);
@@ -102,7 +100,7 @@ const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 	return ("Grade Too Low");
 }
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &rhs)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs)
 {
 	std::cout << rhs.getName() << ","  << " Bureaucrat Grade " << rhs.getGrade() << std::endl;
 	return (out);

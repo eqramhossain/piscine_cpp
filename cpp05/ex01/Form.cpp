@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:03:51 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/12 17:38:10 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:37:22 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ Form::Form(void) : _name("Default"), _is_signed(false), _grade_sign(1), _grade_e
 	// std::cout << "Default Constructor called" << std::endl;
 }
 
-Form::Form(std::string name, int sign, int execute) : _name(name), _is_signed(false), _grade_sign(sign), _grade_execute(execute)
+Form::Form(const std::string name, int sign, int execute) : _name(name), _is_signed(false), _grade_sign(sign), _grade_execute(execute)
 {
 	// std::cout << "Parameteraized Constructor called" << std::endl;
 }
 
-Form::Form(Form &rhs) : _name(rhs._name), _is_signed(rhs._is_signed), _grade_sign(rhs._grade_sign), _grade_execute(rhs._grade_execute)
+Form::Form(const Form &rhs) : _name(rhs._name), _is_signed(rhs._is_signed), _grade_sign(rhs._grade_sign), _grade_execute(rhs._grade_execute)
 {
 	// std::cout << "Copy Constructor called" << std::endl;
 }
 
-Form	&Form::operator=(Form &rhs) 
+Form	&Form::operator=(const Form &rhs) 
 {
 	// std::cout << "Copy Assignment operator called" << std::endl;
 	if (this != &rhs)
@@ -87,7 +87,7 @@ const char *Form::GradeTooLowException::what() const throw()
 	return ("Grade too Low");
 }
 
-std::ostream &operator<<(std::ostream &out, Form &rhs)
+std::ostream &operator<<(std::ostream &out, const Form &rhs)
 {
 	std::cout << "Form Name: " << rhs.get_name() << std::endl;
 	std::cout << "Form is signed: " << rhs.get_is_signed() << std::endl;

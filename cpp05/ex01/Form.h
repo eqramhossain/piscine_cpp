@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:03:57 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/12 17:29:50 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:35:58 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ class Form
 
   public:
 	Form(void);
-	Form(std::string name, int sign, int execute);
-	Form(Form &rhs);
-	Form &operator=(Form &rhs);
+	Form(const std::string name, int sign, int execute);
+	Form(const Form &rhs);
+	Form &operator=(const Form &rhs);
 	~Form(void);
 
 	std::string get_name(void) const;
@@ -52,6 +52,6 @@ class Form
 	};
 };
 
-std::ostream &operator<<(std::ostream &out, Form &rhs);
+std::ostream &operator<<(std::ostream &out, const Form &rhs);
 
 #endif
