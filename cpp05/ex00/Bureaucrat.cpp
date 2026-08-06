@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:06:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/12 17:26:16 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:25:25 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,17 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat &rhs)
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs)
 {
 	// std::cout << "Copy Constructor called Bureaucrat" << std::endl;
 	*this = rhs;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat &rhs)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
 	// std::cout << "Copy Assignment operator called Bureaucrat" << std::endl;
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
 	}
 	return (*this);
@@ -87,7 +86,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade Too Low");
 }
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &rhs)
+std::ostream &operator<<(std::ostream &out,const Bureaucrat &rhs)
 {
 	std::cout << rhs.getName() << ","  << " Bureaucrat Grade " << rhs.getGrade() << std::endl;
 	return (out);
