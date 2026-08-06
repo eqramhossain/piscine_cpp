@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:03:51 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 20:16:51 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:52:33 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@
 
 AForm::AForm(void) : _name("Default"), _is_signed(false), _grade_sign(1), _grade_execute(1)
 {
-	std::cout << "Default Constructor called AForm" << std::endl;
+	// std::cout << "Default Constructor called AForm" << std::endl;
 }
 
 AForm::AForm(std::string name, int sign, int execute) : _name(name), _is_signed(false), _grade_sign(sign), _grade_execute(execute)
 {
-	std::cout << "Parameteraized Constructor called AForm" << std::endl;
+	// std::cout << "Parameteraized Constructor called AForm" << std::endl;
 }
 
-AForm::AForm(AForm &rhs) : _name(rhs._name), _is_signed(rhs._is_signed), _grade_sign(rhs._grade_sign), _grade_execute(rhs._grade_execute)
+AForm::AForm(const AForm &rhs) : _name(rhs._name), _is_signed(rhs._is_signed), _grade_sign(rhs._grade_sign), _grade_execute(rhs._grade_execute)
 {
-	std::cout << "Copy Constructor called AForm" << std::endl;
+	// std::cout << "Copy Constructor called AForm" << std::endl;
 }
 
-AForm	&AForm::operator=(AForm &rhs) 
+AForm	&AForm::operator=(const AForm &rhs) 
 {
-	std::cout << "Copy Assignment operator called AForm" << std::endl;
+	// std::cout << "Copy Assignment operator called AForm" << std::endl;
 	if (this != &rhs)
 	{
 		this->_is_signed = rhs._is_signed;
@@ -42,7 +42,7 @@ AForm	&AForm::operator=(AForm &rhs)
 
 AForm::~AForm()
 {
-	std::cout << "Destructor called AForm" << std::endl;
+	// std::cout << "Destructor called AForm" << std::endl;
 }
 
 std::string AForm::get_name(void) const

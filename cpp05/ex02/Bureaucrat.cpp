@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:06:18 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 20:52:09 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:51:54 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(1)
 {
-	std::cout << "Default Constructor Called Bureaucrat" << std::endl;
+	// std::cout << "Default Constructor Called Bureaucrat" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	std::cout << "Prarameterised Constructor called Bureaucrat" << std::endl;
+	// std::cout << "Prarameterised Constructor called Bureaucrat" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
@@ -31,18 +31,16 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat &rhs)
+Bureaucrat::Bureaucrat(const Bureaucrat &rhs) : _name(rhs._name), _grade(rhs._grade)
 {
-	std::cout << "Copy Constructor called Bureaucrat" << std::endl;
-	*this = rhs;
+	// std::cout << "Copy Constructor called Bureaucrat" << std::endl;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat &rhs)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-	std::cout << "Copy Assignment operator called Bureaucrat" << std::endl;
+	// std::cout << "Copy Assignment operator called Bureaucrat" << std::endl;
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName();
 		this->_grade = rhs.getGrade();
 	}
 	return (*this);
@@ -50,7 +48,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat &rhs)
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "Destructor called Bureaucrat" << std::endl;
+	// std::cout << "Destructor called Bureaucrat" << std::endl;
 }
 
 void Bureaucrat::incrementGrade(void)

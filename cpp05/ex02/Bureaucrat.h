@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 15:05:39 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 19:35:26 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:51:08 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ class AForm;
 class Bureaucrat
 {
   private:
-	std::string _name;
+	const std::string _name;
 	int _grade;
 
   public:	
 	Bureaucrat(void);
-	Bureaucrat(std::string name, int grade);
-	Bureaucrat(Bureaucrat &rhs);
-	Bureaucrat &operator=(Bureaucrat &rhs);
+	Bureaucrat(const std::string name, int grade);
+	Bureaucrat(const Bureaucrat &rhs);
+	Bureaucrat &operator=(const Bureaucrat &rhs);
 	~Bureaucrat(void);
 
 	void incrementGrade(void);

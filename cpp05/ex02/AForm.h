@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:03:57 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/13 19:45:11 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 19:52:05 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ class AForm
 
   public:
 	AForm(void);
-	AForm(std::string name, int sign, int execute);
-	AForm(AForm &rhs);
-	AForm &operator=(AForm &rhs);
+	AForm(const std::string name, int sign, int execute);
+	AForm(const AForm &rhs);
+	AForm &operator=(const AForm &rhs);
 	~AForm(void);
 
 	std::string get_name(void) const;
