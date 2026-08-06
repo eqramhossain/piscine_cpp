@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:36:34 by ehossain          #+#    #+#             */
-/*   Updated: 2026/08/06 20:02:48 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:08:32 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PresidentialPardonForm::PresidentialPardonForm(void)
 	// std::cout << "Default Constructor Called PresidentialPardonForm" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm(target, 25, 5), _target(target)
 {
 	// std::cout << "Parameterazied Constructor Called PresidentialPardonForm" << std::endl;
 }
@@ -30,12 +30,12 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	// std::cout << "Destructor Called PresidentialPardonForm" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &rhs) : AForm(rhs), _target(rhs._target)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &rhs) : AForm(rhs), _target(rhs._target)
 {
 	// std::cout << "Copy Constructor Called PresidentialPardonForm" << std::endl;
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm &rhs)
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs)
 {
 	// std::cout << "Copy Assignment operator Called PresidentialPardonForm" << std::endl;
 	if (this != &rhs)
