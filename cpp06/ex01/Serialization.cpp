@@ -1,7 +1,27 @@
-#include <iostream>
 #include <stdint.h>
-#include <new>
 #include "Serialization.h"
+
+Serialization::Serialization(void)
+{
+}
+
+Serialization::~Serialization(void)
+{
+}
+
+Serialization::Serialization(const Serialization &rhs)
+{
+	*this = rhs;
+}
+
+Serialization &Serialization::operator=(const Serialization &rhs)
+{
+	if (this != &rhs)
+	{
+		//
+	}
+	return (*this);
+}
 
 uintptr_t   Serialization::serialize(Data *ptr)
 {

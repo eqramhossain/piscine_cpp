@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 16:30:17 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/28 16:49:36 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:23:57 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ int     main(void)
 
     uintptr_t  raw = Serialization::serialize(ptr);
     Data    *data = Serialization::deserialize(raw);
+ 
+	std::cout << "data: " << data << '\n';
+    // std::cout << "data: " << &data << '\n';
 
-    std::cout << ptr << '\n';
-    std::cout << raw << '\n';
-    std::cout << data << '\n';
+    std::cout << "ptr: " << ptr << '\n';
+    // std::cout << "&ptr: " << &ptr << '\n';
     
-    std::cout << "raw: " << raw << std::endl;
-
+	std::cout << "raw: " << raw << '\n';
+    // std::cout << "&raw: " << &raw << '\n';
+       
     std::cout << "data->name: " << data->name << std::endl;
     std::cout << "data->age: " << data->age << std::endl;
 
