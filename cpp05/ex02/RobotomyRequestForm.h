@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:34:10 by ehossain          #+#    #+#             */
-/*   Updated: 2026/07/14 16:28:32 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:06:12 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ class	RobotmyRequestForm : public AForm
 
 	public:
 		RobotmyRequestForm(void);
-		RobotmyRequestForm(std::string target);
-		RobotmyRequestForm(RobotmyRequestForm &rhs);
-		RobotmyRequestForm &operator=(RobotmyRequestForm &rhs);
+		RobotmyRequestForm(const std::string target);
+		RobotmyRequestForm(const RobotmyRequestForm &rhs);
+		RobotmyRequestForm &operator=(const RobotmyRequestForm &rhs);
 		~RobotmyRequestForm();
 
 		void virtual execute(Bureaucrat const &executor) const;
-
-
 };
 
 #endif

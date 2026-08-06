@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 19:36:26 by ehossain          #+#    #+#             */
-/*   Updated: 2026/08/06 20:02:20 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/06 20:07:14 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ RobotmyRequestForm::~RobotmyRequestForm()
 	// std::cout << "Destructor Called RobotmyRequestForm" << std::endl;
 }
 
-RobotmyRequestForm::RobotmyRequestForm(RobotmyRequestForm &rhs) : AForm(rhs), _target(rhs._target)
+RobotmyRequestForm::RobotmyRequestForm(const RobotmyRequestForm &rhs) : AForm(rhs), _target(rhs._target)
 {
 	// std::cout << "Copy Constructor Called RobotmyRequestForm" << std::endl;
 }
 
-RobotmyRequestForm &RobotmyRequestForm::operator=(RobotmyRequestForm &rhs)
+RobotmyRequestForm &RobotmyRequestForm::operator=(const RobotmyRequestForm &rhs)
 {
 
 	// std::cout << "Copy Assignment operator Called RobotmyRequestForm" << std::endl;
