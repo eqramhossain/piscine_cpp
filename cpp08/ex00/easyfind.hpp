@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:11:05 by ehossain          #+#    #+#             */
-/*   Updated: 2026/08/09 20:46:09 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/11 11:46:18 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <exception>
 #include <iostream>
+#include <iterator>
 
 class containerSize : public std::exception
 {
@@ -42,21 +43,19 @@ void easyfind(T contain, int value)
 	{
 		throw containerSize();
 	}
-	bool found = false;
-	for (size_t i = 0; i < contain.size(); i++)
-	{
-		if (contain[i] == value)
-		{
-			found = true;
-			std::cout << "found matched value = " << contain[i] << std::endl;
-			break;
-		}
-	}
-	if (found == false)
+
+	// T is a template-dependent type, and iterator is a type inside T.
+	typename T::iterator it = std::find(contain.begin(), contain.end(), value);
+
+	if (*it != value)
 	{
 		throw easyFindException();
 	}
-	std::find()
+	else 
+	{
+		typename T::iterator it_start = contain.begin();
+		std::cout << "Found value at " << std::distance(it_start, it) << std::endl;
+	}
 }
 
 #endif
