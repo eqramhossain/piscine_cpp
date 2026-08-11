@@ -5,51 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/09 20:14:50 by ehossain          #+#    #+#             */
-/*   Updated: 2026/08/09 20:42:10 by ehossain         ###   ########.fr       */
+/*   Created: 2026/08/09 20:38:04 by ehossain          #+#    #+#             */
+/*   Updated: 2026/08/09 20:38:24 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <deque>
-#include <exception>
 #include <iostream>
-#include "easyfind.hpp"
 
 int		main(void)
 {
-	std::deque<std::string> d;
-
-	try 
-	{
-		easyfind(d, 555);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Exception message: " << e.what() << std::endl;
-	}
-
-	d.push_back("hello");
-
-	try 
-	{
-		easyfind(d, 'x');
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Exception message: " << e.what() << std::endl;
-	}
-
-	d.push_back("ekram");
-	d.push_back("world");
-
-	try 
-	{
-		easyfind(d, 3);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Exception message: " << e.what() << std::endl;
-	}
-
-	return (0);
+	return(0);
 }

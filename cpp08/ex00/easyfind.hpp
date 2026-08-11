@@ -6,13 +6,14 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 20:11:05 by ehossain          #+#    #+#             */
-/*   Updated: 2026/08/09 20:34:31 by ehossain         ###   ########.fr       */
+/*   Updated: 2026/08/09 20:46:09 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
+#include <algorithm>
 #include <exception>
 #include <iostream>
 
@@ -55,6 +56,7 @@ void easyfind(T contain, int value)
 	{
 		throw easyFindException();
 	}
+	std::find()
 }
 
 #endif
