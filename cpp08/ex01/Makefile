@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/29 12:26:31 by ehossain          #+#    #+#              #
-#    Updated: 2026/07/29 16:53:25 by ehossain         ###   ########.fr        #
+#    Updated: 2026/08/11 13:08:29 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME= a.out
 CXX= c++
 CXXFLAGS= -Wall -Wextra -Werror -g3 -std=c++98
 
-SRC= main.cpp
+SRC= main.cpp\
+	 Span.cpp
 
 OBJ= ${SRC:.cpp=.o}
 
